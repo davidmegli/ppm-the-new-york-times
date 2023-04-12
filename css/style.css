@@ -38,6 +38,8 @@
 * {
     font-family: nyt-franklin,helvetica,arial,sans-serif;
     font:inherit;
+    padding: 0;
+    margin: 0;
 }
 
 button {
@@ -598,4 +600,14 @@ div#nav nav a{
 
 .article-img {
     float:right;
+}
+
+.article-author {
+    font: 9px nyt-franklin,helvetica,arial,sans-serif;
+    line-height: 1.3em;
+    color: #727272;
+    display: inline-block;
+    vertical-align: text-top;
+    float: right;
+    margin: 4px 0 0 0;
 }

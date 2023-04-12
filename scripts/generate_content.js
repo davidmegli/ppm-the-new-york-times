@@ -26,6 +26,8 @@ function generateContent() {
         article_section.appendChild(article_div);
 
         numberOfArticlesPerSection = 2;
+        let article = new Article();
+
         for(let j = 0; j < numberOfArticlesPerSection; j++) {
             const single_article_div = document.createElement("div");
             single_article_div.classList.add("single-article-div", "col-12", "row-6");
@@ -37,20 +39,21 @@ function generateContent() {
             }
             article_div.appendChild(single_article_div);
 
+
             const title = document.createElement("h3");
             title.classList.add("article-title");
-            title.innerHTML = "Lorem ipsum dolor sit amet";
+            title.innerHTML = article["title"];
             single_article_div.appendChild(title);
 
             const text = document.createElement("p");
             text.classList.add("article-text");
-            text.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";
+            text.innerHTML = article["text"];
             single_article_div.appendChild(text);
 
             const timeToRead = document.createElement("p");
             timeToRead.classList.add("article-time-to-read","text-uppercase");
-            let minutes = Math.floor(Math.random() * 6) + 1;
-            timeToRead.innerHTML = minutes + " min read";
+
+            timeToRead.innerHTML = article["minutes"] + " min read";
             single_article_div.appendChild(timeToRead);
         }
 
@@ -64,6 +67,10 @@ function generateContent() {
         img.classList.add("article-img");
         img.setAttribute("src","https://picsum.photos/450/300?random="+i);
         img_div.appendChild(img);
+        const author = document.createElement("p");
+        author.classList.add("article-author");
+        author.innerHTML = "David Megli";
+        img_div.appendChild(author);
 
 
 
@@ -71,4 +78,10 @@ function generateContent() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", generateContent);
+function Article() {
+    this.title = "Lorem ipsum dolor sit amet";
+    this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";
+    this.minutes = Math.floor(Math.random() * 6) + 1;
+}
+
+document.addEventListener("DOMContentLoaded", generateContent)
