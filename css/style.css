@@ -611,3 +611,28 @@ div#nav nav a{
     float: right;
     margin: 4px 0 0 0;
 }
+
+.article-right-title {
+    font: 24px nyt-cheltenham,georgia,'times new roman',times,serif;
+    line-height: 1.15em;
+    font-weight: 300;
+}
+
+.article-right-text {
+    color: #5A5A5A;
+    font: 14px nyt-imperial,helvetica,georgia,'times new roman',times,serif;
+    letter-spacing: 0.1px;
+    line-height: 1.1875rem;
+    position: relative;
+}
+
+#main-content {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.right-content-section {
+
+    position: relative;
+    left: 10px;
+}
