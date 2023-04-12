@@ -579,6 +579,7 @@ div#nav nav a{
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin: 0;
+    padding: 0;
     color: #727272;
     margin-top: 0.25rem;
 }
@@ -609,13 +610,16 @@ div#nav nav a{
     display: inline-block;
     vertical-align: text-top;
     float: right;
+    text-align: right;
     margin: 4px 0 0 0;
+    padding: 0;
 }
 
 .article-right-title {
     font: 24px nyt-cheltenham,georgia,'times new roman',times,serif;
     line-height: 1.15em;
     font-weight: 300;
+    padding: 0;
 }
 
 .article-right-text {
@@ -624,15 +628,58 @@ div#nav nav a{
     letter-spacing: 0.1px;
     line-height: 1.1875rem;
     position: relative;
+    padding: 0;
+}
+
+.article-right-small-title {
+    font: 16px nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
+    line-height: 1.15em;
+    margin: 0;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
 }
 
 #main-content {
-    margin-right: 0;
-    padding-right: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .right-content-section {
-
     position: relative;
-    left: 10px;
+}
+
+.opinion-section-title {
+    font-family: nyt-franklin,helvetica,arial,sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.opinion-author {
+    font-family: nyt-cheltenham-small,nyt-cheltenham,georgia,'times new roman',times,serif;
+    font-size: 0.75rem;
+    line-height: 1.25em;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: #727272;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+.opinion-title {
+    font: 18px nyt-cheltenham-text-cond,nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
+    line-height: 1.15em;
+    transform-origin: left top;
+    -webkit-letter-spacing: 0.0025em;
+    -moz-letter-spacing: 0.0025em;
+    -ms-letter-spacing: 0.0025em;
+    letter-spacing: 0.0025em;
+    margin: 0;
+    color: #121212;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
 }
