@@ -106,21 +106,6 @@ a:active { text-decoration: none; }
     padding: 0;
 }
 
-#nav.is-sticky {
-    position: fixed;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
-    animation: slideDown 0.35s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
 
 body {
     font-family: nyt-cheltenham,georgia,'times new roman',times,serif;
@@ -279,6 +264,7 @@ div#nav nav{
     margin: 7px 0px 0px 0px;
 }
 
+
 @media (max-width: 1149px) {
     div#nav nav{
         padding: 0 10px;
@@ -343,7 +329,7 @@ div#language a{
 
 
 
-@media (min-width: 1024px) {
+@media (min-width: 1034px) {
     #subscribe-button, #login-button, #search-submit {
         border-radius: 3px;
         cursor: pointer;
@@ -719,5 +705,136 @@ div#nav nav a{
     -ms-letter-spacing: 0.01em;
     letter-spacing: 0.01em;
     transform-origin: top left;
-    transform: scale(1.1,1.3);
+}
+
+
+#nytimes-logo-mini {
+    width: 13px;
+    height: 15px;
+    margin: 10px;
+    padding: 0;
+    display:none;
+}
+
+#nytimes-logo-mini.is-sticky {
+    display: block;
+    margin: 6px 3px 0 0;
+}
+@media (max-width: 1200px) {
+    #nytimes-logo-mini.is-sticky {
+        margin: 6px 3px 0 20px;
+    }
+}
+
+#nav.is-sticky {
+    position: fixed;
+    top: 0;
+    left:0;
+    background-color: white;
+    height: 40px;
+    width: 100%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    align-text: center;
+    border: 0;
+    margin: 0;
+    animation: slideDown 0.35s ease-out;
+}
+
+#main-nav.is-sticky {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    padding:0;
+    max-width: 1149px ;
+}
+@media (max-width: 1200px) {
+    #main-nav.is-sticky {
+        margin-right: 20px;
+    }
+}
+
+#desktop-section-button.is-sticky {
+    margin-top: 0;
+    margin-left: 5px;
+    padding: 0;
+    position:relative;
+    top: -5px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1033px) {
+    #main-nav, #main-nav.is-sticky, #nav.is-sticky, #nav a, #nav span, #search-button, #language a{
+        display: none;
+    }
+    #nav {
+        border-bottom: 1px solid #e2e2e2;
+        scrollbar: none;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+    }
+    #todays-paper {
+        display: none;
+    }
+    .todays-date-low-res {
+        display: inline;
+        width: 50%;
+        margin: 5px auto;
+        padding-top: 5px;
+    }
+    #subscribe-button.subscribe-button-low-res {
+        position:fixed;
+        top:0;
+        left: 0;
+        z-index: 100;
+    }
+    #header-bot {
+        visibility: hidden;
+    }
+    #header-top {
+        height: 50px;
+    }
+    #nyt-logo {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        transform: scale(0.65);
+    }
+}
+
+@media (max-width: 739px) {
+    #main-nav {
+        display: none;
+    }
+    #nav {
+        background-color: var(--color-gray-2);
+        margin-right: 0;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        position:relative;
+        left: -11px;
+        height: 40px;
+        width: 110%;
+    }
+    hr.solid{
+        display: none;
+    }
+    .todays-date-low-res{
+        margin-left: 0px;
+        margin-top: 5px;
+        display: inline;
+    }
+    #main-nav {
+        display: flex;
+    }
 }

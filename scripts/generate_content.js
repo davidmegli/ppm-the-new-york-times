@@ -1,6 +1,6 @@
 
 function generateContent() {
-    numberOfArticles = 10;
+    let numberOfArticles = 10;
     const main_content = document.getElementById("main-content");
     const anotherArticleTitleLength = 26;
 
@@ -388,7 +388,7 @@ function generateContent() {
     in_case_you_missed_it.innerHTML = "In Case You Missed It";
     right_articles_div.appendChild(in_case_you_missed_it);
     const top_picks_recommended_for_you = document.createElement("span");
-    top_picks_recommended_for_you.classList.add("right-section-subtitle","col-12","m-0","p-0","mb-2");
+    top_picks_recommended_for_you.classList.add("right-section-subtitle","col-12","m-0","p-0","mb-2","mw-100");
     top_picks_recommended_for_you.innerHTML = "Top picks from The Times, recommended for you";
     right_articles_div.appendChild(top_picks_recommended_for_you);
 
