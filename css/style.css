@@ -662,7 +662,7 @@ div#nav nav a{
     position: relative;
 }
 
-.opinion-section-title {
+.right-section-title {
     font-family: nyt-franklin,helvetica,arial,sans-serif;
     font-size: 0.875rem;
     line-height: 1.3em;
@@ -707,4 +707,17 @@ div#nav nav a{
     .article-right-1-img {
 
     }
+}
+
+.right-section-subtitle {
+    font-family: nyt-cheltenham-small,nyt-cheltenham,georgia,'times new roman',times,serif;
+    font-style: italic;
+    font-size: 0.725rem;
+    line-height: 1.25em;
+    -webkit-letter-spacing: 0.01em;
+    -moz-letter-spacing: 0.01em;
+    -ms-letter-spacing: 0.01em;
+    letter-spacing: 0.01em;
+    transform-origin: top left;
+    transform: scale(1.1,1.3);
 }

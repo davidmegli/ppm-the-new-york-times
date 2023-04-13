@@ -2,6 +2,7 @@
 function generateContent() {
     numberOfArticles = 10;
     const main_content = document.getElementById("main-content");
+    const anotherArticleTitleLength = 26;
 
     main_content.innerHTML = "";
     const left_section = document.createElement("section");
@@ -172,7 +173,7 @@ function generateContent() {
     opinion_container_div.classList.add("opinion-container","col-12","column","m-0","px-0","pt-2","pb-4");
     right_articles_div.appendChild(opinion_container_div);
     const opinion_section_title = document.createElement("a");
-    opinion_section_title.classList.add("opinion-section-title","col-12","row","m-0","p-0","pb-2","float-start");
+    opinion_section_title.classList.add("opinion-section-title","right-section-title","col-12","row","m-0","p-0","pb-2","float-start");
     opinion_section_title.href = "opinion.html";
     opinion_section_title.innerHTML = "Opinion";
     opinion_container_div.appendChild(opinion_section_title);
@@ -320,9 +321,104 @@ function generateContent() {
     carousel_control_next_span2.innerHTML = "Next";
     carousel_control_next.appendChild(carousel_control_next_span2);
 
+    //other articles
+    article = new Article();
+    const another_article_1_link = document.createElement("div");
+    another_article_1_link.classList.add("col-12","row","m-0","p-0");
+    another_article_1_link.classList.add("mt-3", "border-bottom", "pb-3");
+    another_article_1_link.classList.add("other-articles");
+    right_articles_div.appendChild(another_article_1_link);
+    const another_article_1_div = document.createElement("div");
+    another_article_1_div.classList.add("col-8","row","m-0","p-0","pe-2");
+    another_article_1_link.appendChild(another_article_1_div);
+    const another_article_1_title = document.createElement("h3");
+    another_article_1_title.classList.add("col-12","m-0","p-0");
+    another_article_1_title.classList.add("other-articles-title");
+    another_article_1_title.innerHTML = article.title;
+    another_article_1_div.appendChild(another_article_1_title);
+    const another_article_1_text = document.createElement("p");
+    another_article_1_text.classList.add("col-12","m-0","p-0");
+    another_article_1_text.classList.add("other-articles-text");
+    another_article_1_text.innerHTML = article.text.substring(0, anotherArticleTitleLength);
+    another_article_1_div.appendChild(another_article_1_text);
+    const another_article_1_timeToRead = document.createElement("p");
+    another_article_1_timeToRead.classList.add("col-12","m-0","p-0");
+    another_article_1_timeToRead.classList.add("article-time-to-read");
+    another_article_1_timeToRead.innerHTML = article.minutes + " min read";
+    another_article_1_div.appendChild(another_article_1_timeToRead);
+    const another_article_1_img = document.createElement("img");
+    another_article_1_img.classList.add("col-4","m-0","p-0");
+    another_article_1_img.classList.add("other-articles-img");
+    another_article_1_img.setAttribute("src", "https://picsum.photos/300/300?random=" + Math.floor(Math.random() * 100));
+    another_article_1_link.appendChild(another_article_1_img);
 
-    for(let i = 0; i < groupsOfOpinions; i++)
-    {
+    article = new Article();
+    const another_article_2_link = document.createElement("div");
+    another_article_2_link.classList.add("col-12","row","m-0","p-0", "border-bottom","border-dark", "pb-3");
+    another_article_2_link.classList.add("mt-3");
+    another_article_2_link.classList.add("other-articles");
+    right_articles_div.appendChild(another_article_2_link);
+    const another_article_2_div = document.createElement("div");
+    another_article_2_div.classList.add("col-8","row","m-0","p-0","pe-2");
+    another_article_2_link.appendChild(another_article_2_div);
+    const another_article_2_title = document.createElement("h3");
+    another_article_2_title.classList.add("col-12","m-0","p-0");
+    another_article_2_title.classList.add("other-articles-title");
+    another_article_2_title.innerHTML = article.title.substring(0, anotherArticleTitleLength);
+    another_article_2_div.appendChild(another_article_2_title);
+    const another_article_2_text = document.createElement("p");
+    another_article_2_text.classList.add("col-12","m-0","p-0");
+    another_article_2_text.classList.add("other-articles-text");
+    another_article_2_text.innerHTML = article.text;
+    another_article_2_div.appendChild(another_article_2_text);
+    const another_article_2_timeToRead = document.createElement("p");
+    another_article_2_timeToRead.classList.add("col-12","m-0","p-0");
+    another_article_2_timeToRead.classList.add("article-time-to-read");
+    another_article_2_timeToRead.innerHTML = article.minutes + " min read";
+    another_article_2_div.appendChild(another_article_2_timeToRead);
+    const another_article_2_img = document.createElement("img");
+    another_article_2_img.classList.add("col-4","m-0","p-0");
+    another_article_2_img.classList.add("other-articles-img");
+    another_article_2_img.setAttribute("src", "https://picsum.photos/300/300?random=" + Math.floor(Math.random() * 100));
+    another_article_2_link.appendChild(another_article_2_img);
+
+    const in_case_you_missed_it = document.createElement("span");
+    in_case_you_missed_it.classList.add("right-section-title","col-12","m-0","p-0");
+    in_case_you_missed_it.classList.add("mt-2", "mb-1");
+    in_case_you_missed_it.innerHTML = "In Case You Missed It";
+    right_articles_div.appendChild(in_case_you_missed_it);
+    const top_picks_recommended_for_you = document.createElement("span");
+    top_picks_recommended_for_you.classList.add("right-section-subtitle","col-12","m-0","p-0","mb-2");
+    top_picks_recommended_for_you.innerHTML = "Top picks from The Times, recommended for you";
+    right_articles_div.appendChild(top_picks_recommended_for_you);
+
+    let inCaseYouMissedItArticles = 5;
+    for (let i = 0; i < inCaseYouMissedItArticles; i++) {
+        let article = new Article();
+        const in_case_you_missed_it_link = document.createElement("a");
+        in_case_you_missed_it_link.classList.add("col-12","row","m-0","p-0", "border-bottom", "pb-3");
+        in_case_you_missed_it_link.classList.add("mt-3");
+        in_case_you_missed_it_link.classList.add("other-articles");
+        in_case_you_missed_it_link.setAttribute("href", "#");
+        right_articles_div.appendChild(in_case_you_missed_it_link);
+        const in_case_you_missed_it_div = document.createElement("div");
+        in_case_you_missed_it_div.classList.add("col-8","row","m-0","p-0","pe-2");
+        in_case_you_missed_it_link.appendChild(in_case_you_missed_it_div);
+        const in_case_you_missed_it_title = document.createElement("h3");
+        in_case_you_missed_it_title.classList.add("col-12","m-0","p-0");
+        in_case_you_missed_it_title.classList.add("article-right-small-title");
+        in_case_you_missed_it_title.innerHTML = article.title;
+        in_case_you_missed_it_div.appendChild(in_case_you_missed_it_title);
+        const in_case_you_missed_it_timeToRead = document.createElement("p");
+        in_case_you_missed_it_timeToRead.classList.add("col-12","m-0","p-0");
+        in_case_you_missed_it_timeToRead.classList.add("article-time-to-read");
+        in_case_you_missed_it_timeToRead.innerHTML = article.minutes + " min read";
+        in_case_you_missed_it_div.appendChild(in_case_you_missed_it_timeToRead);
+        const in_case_you_missed_it_img = document.createElement("img");
+        in_case_you_missed_it_img.classList.add("col-4","m-0","p-0");
+        in_case_you_missed_it_img.classList.add("other-articles-img");
+        in_case_you_missed_it_img.setAttribute("src", "https://picsum.photos/300/300?random=" + Math.floor(Math.random() * 100));
+        in_case_you_missed_it_link.appendChild(in_case_you_missed_it_img);
 
     }
 
