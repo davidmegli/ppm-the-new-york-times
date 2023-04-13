@@ -1,0 +1,13 @@
+#left-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #eee;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
