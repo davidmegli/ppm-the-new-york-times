@@ -5,11 +5,11 @@ function generateContent() {
 
     main_content.innerHTML = "";
     const left_section = document.createElement("section");
-    left_section.classList.add("left-content-section","col-12","col-sm-12","col-md-9","row","pe-0");
+    left_section.classList.add("left-content-section","col-12","col-xl-9","row","pe-0","ps-4","ps-xl-3","mt-10","border-end-1");
     main_content.appendChild(left_section);
 
     const right_section = document.createElement("section");
-    right_section.classList.add("right-content-section","col-12","col-sm-12","col-md-3","column","pt-2","px-0","mr-0");
+    right_section.classList.add("right-content-section","col-12","col-xl-3","column","pt-2","pe-4","mr-0","mr-xl-0","px-xl-0");
     main_content.appendChild(right_section);
 
     //genero gli articoli di sinistra (principali)
@@ -17,6 +17,8 @@ function generateContent() {
         //creo una sezione per ogni elemento
         const article_section = document.createElement("section");
         article_section.classList.add("article-section","row");
+        if(i===0) //se è il primo elemento azzero il padding top
+            article_section.classList.add("pt-0");
         left_section.appendChild(article_section);
 
         //creo un div per contenere l'immagine
@@ -26,13 +28,16 @@ function generateContent() {
 
         numberOfArticlesPerSection = 2;
 
-        for(let j = 0; j < numberOfArticlesPerSection; j++) {
+        let firstArticle = new Article();
 
+        for(let j = 0; j < numberOfArticlesPerSection; j++) {
             let article = new Article();
+            if(j===0)
+                article = firstArticle;
 
             const article_link = document.createElement("a");
             article_link.classList.add("article-link");
-            article_link.href = article["link"];
+            article_link.href = article.link;
             article_div.appendChild(article_link);
 
             const single_article_div = document.createElement("div");
@@ -47,23 +52,29 @@ function generateContent() {
 
             const title = document.createElement("h3");
             title.classList.add("article-title");
-            title.innerHTML = article["title"];
+            if(i===0 && j===0) //aumento il font-size del primo titolo della prima sezione
+                title.classList.add("first-article-title");
+            title.innerHTML = article.title;
             single_article_div.appendChild(title);
 
             const text = document.createElement("p");
             text.classList.add("article-text");
-            text.innerHTML = article["text"];
+            text.innerHTML = article.text;
             single_article_div.appendChild(text);
 
             const timeToRead = document.createElement("p");
             timeToRead.classList.add("article-time-to-read","text-uppercase");
-            timeToRead.innerHTML = article["minutes"] + " min read";
+            timeToRead.innerHTML = article.minutes + " min read";
             single_article_div.appendChild(timeToRead);
         }
-        //creo un'immagine
+        //creo un link che contiene un'immagine e linka al primo articolo della sezione
+        const img_link = document.createElement("a");
+        img_link.classList.add("img-link","d-inline","col-7","row","p-0","m-0");
+        img_link.setAttribute("href",firstArticle.link);
+        article_section.appendChild(img_link);
         const img_div = document.createElement("div");
-        img_div.classList.add("img-div","d-inline","col-7");
-        article_section.appendChild(img_div);
+        img_div.classList.add("img-div","d-inline","col-12");
+        img_link.appendChild(img_div);
         const img = document.createElement("img");
         img.classList.add("article-img");
         img.setAttribute("src","https://picsum.photos/520/348?random="+i);
@@ -71,7 +82,7 @@ function generateContent() {
         const author = document.createElement("p");
         author.classList.add("article-author");
         author.innerHTML = "David Megli";
-        img_div.appendChild(author);
+        img_link.appendChild(author);
     }
 
     //genero gli articoli di destra + opinioni
@@ -86,10 +97,11 @@ function generateContent() {
     article_right_1_link.href = article["link"];
     right_articles_div.appendChild(article_right_1_link);
     const article_right_1_div = document.createElement("div");
-    article_right_1_div.classList.add("article-right-1","col-12","row","m-0","px-0","pt-0","pb-3","border-bottom");
+    article_right_1_div.classList.add("article-right-1","col-12","h-100","flex-xl-row","flex-sm-row-reverse","flex-row-reverse","m-0","px-0","pt-0","pb-3","border-bottom");
     article_right_1_link.appendChild(article_right_1_div);
     const article_right_1_img = document.createElement("img","m-0","p-0");
-    article_right_1_img.classList.add("article-right-1-img","col-12","row-6","m-0","p-0");
+    article_right_1_img.classList.add("article-right-1-img","row-6","m-0","p-xl-0","pb-3","pb-sm-3");
+    article_right_1_img.classList.add("col-6","col-lg-6","col-xl-12","float-end","float-sm-end","float-xl-center");
     article_right_1_img.setAttribute("src","https://picsum.photos/520/348?random="+Math.floor(Math.random() * 100));
     article_right_1_div.appendChild(article_right_1_img);
     const article_right_1_author = document.createElement("p");
@@ -97,7 +109,7 @@ function generateContent() {
     article_right_1_author.innerHTML = "David Megli";
     article_right_1_div.appendChild(article_right_1_author);
     const article_right_1_title = document.createElement("h3");
-    article_right_1_title.classList.add("article-right-title");
+    article_right_1_title.classList.add("article-right-title","pt-3");
     article_right_1_title.innerHTML = article["title"];
     article_right_1_div.appendChild(article_right_1_title);
     const article_right_1_text = document.createElement("p");
@@ -155,8 +167,9 @@ function generateContent() {
     article_right_3_timeToRead.innerHTML = article["minutes"] + " min read";
     article_right_3_div.appendChild(article_right_3_timeToRead);
 
+    //Opinions
     const opinion_container_div = document.createElement("div");
-    opinion_container_div.classList.add("opinion-container","col-12","column","m-0","px-0","pt-2","pb-4","border-bottom","border-dark");
+    opinion_container_div.classList.add("opinion-container","col-12","column","m-0","px-0","pt-2","pb-4");
     right_articles_div.appendChild(opinion_container_div);
     const opinion_section_title = document.createElement("a");
     opinion_section_title.classList.add("opinion-section-title","col-12","row","m-0","p-0","pb-2","float-start");
@@ -184,7 +197,7 @@ function generateContent() {
         opinion_link.appendChild(opinion_image_div);
         const opinion_img = document.createElement("img");
         opinion_image_div.appendChild(opinion_img);
-        if(i%4 == 0)
+        if(i%4 === 0)
         {
             opinion_link.classList.add("opinion-link", "col-12", "row", "m-0", "p-0", "pt-3", "pb-3", "border-bottom");
             opinion_div.classList.add("opinion", "col-6", "m-0", "p-0","pe-2");
@@ -208,52 +221,110 @@ function generateContent() {
         }
     }
 
-    //Creare qui uno slideshow con 4 raggruppamenti di 2 articoli affiancati
-    const slideshow_container_div = document.createElement("div");
-    slideshow_container_div.classList.add("slideshow-container","col-12","row","m-0","p-0","pt-2","pb-4","border-bottom","border-dark");
-    right_articles_div.appendChild(slideshow_container_div);
-    const slideshow_section_title = document.createElement("a");
-    slideshow_section_title.classList.add("slideshow-section-title","col-12","row","m-0","p-0","pb-2","float-start");
-    slideshow_section_title.href = "slideshow.html";
-    slideshow_section_title.innerHTML = "Slideshow";
-    slideshow_container_div.appendChild(slideshow_section_title);
-    for(let i= 0; i < 4; i++) {
-        const slideshow_div = document.createElement("div");
-        slideshow_div.classList.add("slideshow","col-6","row","m-0","p-0");
-        slideshow_div.classList.add("pe-2","border-end");
-        slideshow_container_div.appendChild(slideshow_div);
-        const slideshow_img = document.createElement("img");
-        slideshow_img.classList.add("slideshow-img","col-12","m-0","p-0");
-        slideshow_img.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
-        slideshow_div.appendChild(slideshow_img);
-        const slideshow_title = document.createElement("h3");
-        slideshow_title.classList.add("opinion-title","col-12","m-0","p-0");
-        slideshow_title.innerHTML = "Lorem ipsum dolor sit amet";
-        slideshow_div.appendChild(slideshow_title);
-        const slideshow_timeToRead = document.createElement("p");
-        slideshow_timeToRead.classList.add("article-time-to-read","col-12","m-0","p-0");
-        slideshow_timeToRead.innerHTML = "5 min read";
-        slideshow_div.appendChild(slideshow_timeToRead);
+    //Creare qui uno carousel con 4 raggruppamenti di 2 articoli affiancati
+    const carousel_container_div = document.createElement("div");
+    carousel_container_div.classList.add("carousel-container","carousel","carousel-dark","slide","col-12","row","m-0","p-0","pt-2","pb-4","border-bottom","border-dark");
+    carousel_container_div.setAttribute("data-bs-ride","carousel");
+    carousel_container_div.setAttribute("id","carouselOpinions");
+    right_articles_div.appendChild(carousel_container_div);
+    const carousel_inner_div = document.createElement("div");
+    carousel_inner_div.classList.add("carousel-inner","col-12","row","m-0","p-0");
+    carousel_container_div.appendChild(carousel_inner_div);
+    let groupsOfOpinions = 4;
+    for(let i= 0; i < groupsOfOpinions; i++) {
+        //div che fa da carousel-item
+        const carousel_item_div = document.createElement("div");
+        carousel_item_div.classList.add("carousel-group","carousel-item","col-12","row","m-0","p-0");
+        if(i===0) {
+            carousel_item_div.classList.add("active");
+        }
+        carousel_inner_div.appendChild(carousel_item_div);
 
+        //div che contiene i 2 div sinistro e destro
+        const carousel_div = document.createElement("div");
+        carousel_div.classList.add("col-12","row","m-0","p-0");
+        carousel_item_div.appendChild(carousel_div);
 
-        const slideshow_div2 = document.createElement("div");
-        slideshow_div2.classList.add("slideshow","col-6","row","m-0","p-0");
-        slideshow_div2.classList.add("ps-2");
-        slideshow_container_div.appendChild(slideshow_div2);
-        const slideshow_img2 = document.createElement("img");
-        slideshow_img2.classList.add("slideshow-img","col-12","m-0","p-0");
-        slideshow_img2.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
-        slideshow_div2.appendChild(slideshow_img2);
-        const slideshow_title2 = document.createElement("h3");
-        slideshow_title2.classList.add("opinion-title","col-12","m-0","p-0");
-        slideshow_title2.innerHTML = "Lorem ipsum dolor sit amet";
-        slideshow_div2.appendChild(slideshow_title2);
-        const slideshow_timeToRead2 = document.createElement("p");
-        slideshow_timeToRead2.classList.add("article-time-to-read","col-12","m-0","p-0");
-        slideshow_timeToRead2.innerHTML = "5 min read";
-        slideshow_div2.appendChild(slideshow_timeToRead2);
+        let opinion = new Opinion();
+        const carousel_link_1 = document.createElement("a");
+        carousel_link_1.classList.add("opinion-link","col-6","m-0","p-0");
+        carousel_link_1.href = opinion.link;
+        carousel_div.appendChild(carousel_link_1);
+        const carousel_div1 = document.createElement("div");
+        carousel_div1.classList.add("col-12","m-0","p-0");
+        carousel_div1.classList.add("pe-2","border-end");
+        carousel_link_1.appendChild(carousel_div1);
+        const carousel_img1 = document.createElement("img");
+        carousel_img1.classList.add("carousel-img","col-12","m-0","p-0");
+        carousel_img1.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
+        carousel_div1.appendChild(carousel_img1);
+        const carousel_title1 = document.createElement("h3");
+        carousel_title1.classList.add("opinion-title","col-12","m-0","p-0");
+        carousel_title1.innerHTML = opinion.title+i; //cancellare i
+        carousel_div1.appendChild(carousel_title1);
+        const carousel_timeToRead1 = document.createElement("p");
+        carousel_timeToRead1.classList.add("article-time-to-read","col-12","m-0","p-0");
+        carousel_timeToRead1.innerHTML = opinion.minutes + " min read"
+        carousel_div1.appendChild(carousel_timeToRead1);
+
+        opinion = new Opinion();
+        const carousel_link_2 = document.createElement("a");
+        carousel_link_2.classList.add("opinion-link","col-6","m-0","p-0");
+        carousel_link_2.href = opinion.link;
+        carousel_div.appendChild(carousel_link_2);
+        const carousel_div2 = document.createElement("div");
+        carousel_div2.classList.add("col-12","m-0","p-0");
+        carousel_div2.classList.add("ps-2");
+        carousel_link_2.appendChild(carousel_div2);
+        const carousel_img2 = document.createElement("img");
+        carousel_img2.classList.add("carousel-img","col-12","m-0","p-0");
+        carousel_img2.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
+        carousel_div2.appendChild(carousel_img2);
+        const carousel_title2 = document.createElement("h3");
+        carousel_title2.classList.add("opinion-title","col-12","m-0","p-0");
+        carousel_title2.innerHTML = opinion.title;
+        carousel_div2.appendChild(carousel_title2);
+        const carousel_timeToRead2 = document.createElement("p");
+        carousel_timeToRead2.classList.add("article-time-to-read","col-12","m-0","p-0");
+        carousel_timeToRead2.innerHTML = opinion.minutes + " min read";
+        carousel_div2.appendChild(carousel_timeToRead2);
+        //carousel
     }
+    const carousel_control_prev = document.createElement("button");
+    carousel_control_prev.classList.add("carousel-control-prev");
+    carousel_control_prev.setAttribute("type","button");
+    carousel_control_prev.setAttribute("data-bs-target","#carouselOpinions");
+    carousel_control_prev.setAttribute("data-bs-slide","prev");
+    carousel_container_div.appendChild(carousel_control_prev);
+    const carousel_control_prev_span = document.createElement("span");
+    carousel_control_prev_span.classList.add("carousel-control-prev-icon");
+    carousel_control_prev_span.setAttribute("aria-hidden","true");
+    carousel_control_prev.appendChild(carousel_control_prev_span);
+    const carousel_control_prev_span2 = document.createElement("span");
+    carousel_control_prev_span2.classList.add("visually-hidden");
+    carousel_control_prev_span2.innerHTML = "Previous";
+    carousel_control_prev.appendChild(carousel_control_prev_span2);
 
+    const carousel_control_next = document.createElement("button");
+    carousel_control_next.classList.add("carousel-control-next");
+    carousel_control_next.setAttribute("type","button");
+    carousel_control_next.setAttribute("data-bs-target","carouselOpinions");
+    carousel_control_next.setAttribute("data-bs-slide","next");
+    carousel_container_div.appendChild(carousel_control_next);
+    const carousel_control_next_span = document.createElement("span");
+    carousel_control_next_span.classList.add("carousel-control-next-icon");
+    carousel_control_next_span.setAttribute("aria-hidden","true");
+    carousel_control_next.appendChild(carousel_control_next_span);
+    const carousel_control_next_span2 = document.createElement("span");
+    carousel_control_next_span2.classList.add("visually-hidden");
+    carousel_control_next_span2.innerHTML = "Next";
+    carousel_control_next.appendChild(carousel_control_next_span2);
+
+
+    for(let i = 0; i < groupsOfOpinions; i++)
+    {
+
+    }
 
 }
 

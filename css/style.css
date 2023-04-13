@@ -73,6 +73,10 @@ button, input {
   }
 }
 
+h3:hover {
+    text-decoration: none;
+    color: var(--color-gray-4);
+}
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
@@ -561,6 +565,10 @@ div#nav nav a{
     -webkit-font-smoothing: antialiased;
 }
 
+.first-article-title {
+    font-size: 22px;
+}
+
 .article-text {
     color: #5a5a5a;
     font-family: nyt-imperial,helvetica,georgia,'times new roman',times,serif;
@@ -587,6 +595,12 @@ div#nav nav a{
 .left-content-section {
     border-right: 1px solid #e5e5e5;
     margin-top: 10px;
+}
+
+@media (max-width: 1199px) {
+    .left-content-section {
+        border-right: none; !important;
+    }
 }
 
 #main-header {
@@ -682,4 +696,15 @@ div#nav nav a{
     color: #121212;
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
+}
+
+.carousel-control-prev .carousel-control-next {
+    position: relative;
+    top: 20px;
+}
+
+@media (max-width: 960px) {
+    .article-right-1-img {
+
+    }
 }
