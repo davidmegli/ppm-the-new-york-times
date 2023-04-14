@@ -6,8 +6,50 @@
     height: 100%;
     background: #fff;
     border-right: 1px solid #eee;
-    z-index: 100;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+    z-index: 50;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+}
+
+.nav-link {
+    font: 14px Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.3em;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sub-menu-list {
+    position: fixed;
+    top: 0;
+    left: 220px;
+    width: 230px;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+    z-index: 60;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sub-menu-title {
+    font: 12px Helvetica, Arial, sans-serif;
+    font-size: 0.79rem;
+    line-height: 1.3em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    text-transform: uppercase;
+    color: grey;
+}
+
+.list-group-item:hover {
+    background-color: #ECF6FF;
 }
