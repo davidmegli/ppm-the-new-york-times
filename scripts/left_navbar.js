@@ -26,7 +26,7 @@ let MainSection = new Section("Main ", [HomePageSection, WorldSection, BusinessS
 let navbarContainer = null;
 let menuTimeout = null;
 let submenuTimeout = null;
-let maxTimeout = 2000;
+let maxTimeout = 400;
 let navbarList = null;
 
 //classe che rappresenta una sezione del menu

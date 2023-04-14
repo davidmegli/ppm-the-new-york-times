@@ -354,6 +354,22 @@ div#language a{
     background-color: rgb(50, 104, 145);
 }
 
+#login-icon {
+    display: none;
+    height: 22px;
+    margin-right: 5px;
+    width: 22px;
+}
+
+@media (max-width: 1033px) {
+    #login-icon {
+        display: inline-block;
+    }
+    #login-button {
+        display: none;
+    }
+}
+
 #search-input {
     display:none;
     position:relative;
@@ -520,7 +536,7 @@ div#nav nav a{
 }
 
 #copyright-section li {
-    padding: 0 5px 0 5px;
+    padding: 10px 5px 10px 5px;
     display: inline;
 }
 
@@ -719,13 +735,15 @@ div#nav nav a{
 #nytimes-logo-mini.is-sticky {
     display: block;
     margin: 6px 3px 0 0;
+    position: relative;
+    top: -1px;
 }
+
 @media (max-width: 1200px) {
     #nytimes-logo-mini.is-sticky {
         margin: 6px 3px 0 20px;
     }
 }
-
 #nav.is-sticky {
     position: fixed;
     top: 0;
@@ -753,12 +771,22 @@ div#nav nav a{
     }
 }
 
+#main-nav.is-sticky a {
+    height: 25px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+#main-nav.is-sticky span {
+    height: 25px;
+}
+
 #desktop-section-button.is-sticky {
     margin-top: 0;
-    margin-left: 5px;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0;
     position:relative;
-    top: -5px;
+    top: -6px;
 }
 
 @keyframes slideDown {
@@ -786,16 +814,32 @@ div#nav nav a{
         display: none;
     }
     .todays-date-low-res {
+        position:relative;
+        left: 55px;
         display: inline;
         width: 50%;
+        text-align: center;
         margin: 5px auto;
         padding-top: 5px;
     }
     #subscribe-button.subscribe-button-low-res {
-        position:fixed;
-        top:0;
-        left: 0;
-        z-index: 5;
+        position: relative;
+        display: inline;
+        right: 20px;
+        top: 12px;
+        z-index: 70;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.6s ease 0s;
+        white-space: nowrap;
+        vertical-align: middle;
+        background-color: transparent;
+        color: rgb(50, 104, 145);
+        font: 10px nyt-franklin,arial,helvetica,sans-serif;
+        height: 12px;
+    }
+    #subscribe-button.subscribe-button-low-res:hover {
+        background-color: #ECF6FF;
     }
     #header-bot {
         visibility: hidden;
@@ -807,7 +851,7 @@ div#nav nav a{
         visibility: visible;
         position: absolute;
         top: 0;
-        transform: scale(0.65);
+        transform: scale(0.60);
     }
 }
 

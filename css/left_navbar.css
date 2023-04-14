@@ -50,6 +50,11 @@
     color: grey;
 }
 
-.list-group-item:hover {
+.list-group-item:hover:not(.sub-menu-title) {
     background-color: #ECF6FF;
+}
+.list-group-item.sub-menu-title:hover {
+    background-color: #fff;
+    color: grey;
+    cursor: pointer;
 }
