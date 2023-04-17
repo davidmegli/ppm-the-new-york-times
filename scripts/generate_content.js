@@ -2,7 +2,8 @@
 function generateContent() {
     let numberOfArticles = 10;
     const main_content = document.getElementById("main-content");
-    const anotherArticleTitleLength = 26;
+    const anotherArticleTitleLength = 35;
+    const anotherArticleTextLength = 75;
 
     main_content.innerHTML = "";
     const left_section = document.createElement("section");
@@ -334,12 +335,12 @@ function generateContent() {
     const another_article_1_title = document.createElement("h3");
     another_article_1_title.classList.add("col-12","m-0","p-0");
     another_article_1_title.classList.add("other-articles-title");
-    another_article_1_title.innerHTML = article.title;
+    another_article_1_title.innerHTML = article.title.substring(0, anotherArticleTitleLength);
     another_article_1_div.appendChild(another_article_1_title);
     const another_article_1_text = document.createElement("p");
     another_article_1_text.classList.add("col-12","m-0","p-0");
     another_article_1_text.classList.add("other-articles-text");
-    another_article_1_text.innerHTML = article.text.substring(0, anotherArticleTitleLength);
+    another_article_1_text.innerHTML = article.text.substring(0, anotherArticleTextLength) + "...";
     another_article_1_div.appendChild(another_article_1_text);
     const another_article_1_timeToRead = document.createElement("p");
     another_article_1_timeToRead.classList.add("col-12","m-0","p-0");
@@ -354,8 +355,8 @@ function generateContent() {
 
     article = new Article();
     const another_article_2_link = document.createElement("div");
-    another_article_2_link.classList.add("col-12","row","m-0","p-0", "border-bottom","border-dark", "pb-3");
-    another_article_2_link.classList.add("mt-3");
+    another_article_2_link.classList.add("col-12","row","m-0","p-0");
+    another_article_2_link.classList.add("mt-3", "border-bottom", "pb-3");
     another_article_2_link.classList.add("other-articles");
     right_articles_div.appendChild(another_article_2_link);
     const another_article_2_div = document.createElement("div");
@@ -369,7 +370,7 @@ function generateContent() {
     const another_article_2_text = document.createElement("p");
     another_article_2_text.classList.add("col-12","m-0","p-0");
     another_article_2_text.classList.add("other-articles-text");
-    another_article_2_text.innerHTML = article.text;
+    another_article_2_text.innerHTML = article.text.substring(0, anotherArticleTextLength) + "...";
     another_article_2_div.appendChild(another_article_2_text);
     const another_article_2_timeToRead = document.createElement("p");
     another_article_2_timeToRead.classList.add("col-12","m-0","p-0");
@@ -425,8 +426,11 @@ function generateContent() {
 }
 
 function Article() {
-    this.title = "Lorem ipsum dolor sit amet";
-    this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";
+    /*this.title = "Lorem ipsum dolor sit amet";
+    this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";*/
+    let article = Math.floor(Math.random() * 30) + 1;
+    this.title = titles[article];
+    this.text = texts[article];
     this.minutes = Math.floor(Math.random() * 6) + 1;
     this.link = "#";
 }
@@ -438,4 +442,69 @@ function Opinion() {
     this.link = "#";
 }
 
-document.addEventListener("DOMContentLoaded", generateContent)
+document.addEventListener("DOMContentLoaded", generateContent);
+
+let titles = [
+    "The Benefits of Mindfulness: Strategies for a More Peaceful Life",
+    "The Future of Work: Automation and Its Implications",
+    "The Ethics of Artificial Intelligence: Exploring the Gray Areas",
+    "The Science of Sleep: Tips for a Better Night's Rest",
+    "The Future of Transportation: Balancing Innovation and Sustainability",
+    "Exploring the World of Virtual Reality: Possibilities and Limitations",
+    "The Psychology of Happiness: Understanding the Key to Well-Being",
+    "The Future of Sustainable Agriculture: Challenges and Opportunities",
+    "The Power of Community: How Connection Shapes Our Lives",
+    "The Future of Space Travel: Challenges and Breakthroughs",
+    "The Art of Leadership: Strategies for Success",
+    "The Future of Renewable Energy: Innovations and Obstacles",
+    "The Psychology of Resilience: Strategies for Overcoming Adversity",
+    "The Future of Health: Advancements and Inequalities",
+    "The Intersection of Art and Technology: Possibilities and Limitations",
+    "Breaking Down Barriers: Advancements in Accessibility Technology",
+    "The Ethics of Gene Editing: Balancing Benefits and Risks",
+    "The Future of Transportation: Innovations and Challenges",
+    "The Psychology of Decision-Making: Understanding Our Choices",
+    "The Rise of E-Commerce: Trends and Implications",
+    "The Future of Energy: Renewables vs. Fossil Fuels",
+    "Exploring the Wonders of Space: Latest Discoveries",
+    "The Power of Positive Thinking: Benefits and Strategies",
+    "Cybersecurity in the Digital Age: Challenges and Solutions",
+    "The Future of Education: Innovations and Challenges",
+    "Exploring the Mysteries of the Human Brain",
+    "The Impact of Social Media on Politics: Opportunities and Threats",
+    "The Future of Healthcare: Challenges and Opportunities",
+    "The Art of Communication: Strategies for Effective Dialogue",
+    "The Future of Artificial Intelligence: Risks and Benefits"
+];
+
+let texts = [  "Discover how practicing mindfulness can help you reduce stress and improve your mental well-being. This article explores practical strategies for incorporating mindfulness into your daily life.",
+    "As automation continues to reshape the workplace, it's important to consider the implications for employees and society at large. This article examines the benefits and drawbacks of automation and offers insights on how we can adapt.",
+    "As artificial intelligence becomes increasingly prevalent in our lives, it's important to consider the ethical implications. This article explores the gray areas of AI and offers insights on how we can navigate them.",
+    "Good sleep is essential for overall health and well-being. This article offers tips for improving the quality of your sleep and explains the science behind why sleep is so important.",
+    "As the world population continues to grow and climate change poses increasing threats, it's important to find sustainable transportation solutions. This article explores innovations in transportation and offers insights on how we can balance progress with environmental concerns.",
+    "Virtual reality offers exciting possibilities for entertainment, education, and more. This article explores the potential and limitations of VR technology and offers insights on how it might impact our lives in the future.",
+    "Happiness is a universal human goal, but what exactly is it and how can we achieve it? This article explores the psychology of happiness and offers practical strategies for increasing our well-being.",
+    "As the global population continues to grow and the climate crisis worsens, it's important to find sustainable agriculture solutions. This article examines the challenges and opportunities in sustainable farming and offers insights on how we can move forward.",
+    "Connection is a fundamental human need, and community plays an important role in our lives. This article explores the power of community and offers insights on how we can cultivate meaningful connections.",
+    "As space exploration advances, it's important to consider the challenges and breakthroughs on the horizon. This article examines the current state of space travel and offers insights on what we might expect in the future.",
+    "Leadership is a crucial skill in many contexts, but what makes a great leader? This article explores the art of leadership and offers practical strategies for becoming an effective leader.",
+    "Renewable energy is key to addressing the climate crisis, but what innovations and obstacles stand in the way? This article examines the future of renewable energy and offers insights on how we can move toward a sustainable future.",
+    "Resilience is the ability to overcome adversity and bounce back from difficult situations. This article explores the psychology of resilience and offers practical strategies for building resilience in ourselves and others.",
+    "As healthcare continues to advance, it's important to consider the implications for individuals and society. This article examines the latest advancements and inequalities in healthcare and offers insights on how we can address these issues.",
+    "Art and technology are converging in exciting ways, offering new possibilities for creativity and expression. This article explores the intersection of art and technology and offers insights on what we might expect in the future.",
+    "As the world becomes more connected, cross-cultural communication skills are increasingly important. This article explores the challenges and opportunities in intercultural communication and offers insights on how we can become more effective communicators.",
+    "As the digital world continues to evolve, it's important to consider the implications for privacy and security. This article examines the latest trends and threats in cybersecurity and offers insights on how we can protect ourselves online.",
+    "Education is a fundamental human right and a key driver of social and economic progress. This article explores the challenges and innovations in education and offers insights on how we can improve access and outcomes for all learners.",
+    "As the world population continues to grow and the climate crisis worsens, it's important to find sustainable solutions for housing. This article examines the latest innovations in green building and offers insights on how we can create more sustainable homes.",
+    "Creativity is essential for innovation and personal fulfillment, but how can we cultivate and express it? This article explores the psychology of creativity and offers practical strategies for tapping into our creative potential.",
+    "As the world becomes more complex and interconnected, critical thinking skills are increasingly important. This article explores the power of critical thinking and offers insights on how we can develop this skill in ourselves and others.",
+    "The internet has revolutionized the way we live and work, but what are the implications for society? This article examines the benefits and drawbacks of the digital age and offers insights on how we can navigate the challenges.",
+    "As the climate crisis worsens, it's important to consider the role of business in creating a more sustainable future. This article explores the latest trends in sustainable business and offers insights on how companies can prioritize both profit and social and environmental responsibility.",
+    "Health and wellness are essential for a happy and fulfilling life, but how can we cultivate these qualities? This article offers tips for improving physical and mental health and explains the science behind why these practices are so beneficial.",
+    "As technology advances, it's important to consider the ethical implications for society and individuals. This article explores the latest debates in tech ethics and offers insights on how we can navigate the gray areas.",
+    "Work is a fundamental part of our lives, but how can we find purpose and fulfillment in our careers? This article explores the psychology of work and offers practical strategies for finding meaning in our professional lives.",
+    "As the world becomes more diverse, it's important to understand and appreciate different cultures. This article explores the power of cultural awareness and offers insights on how we can become more open and inclusive.",
+    "Mental health is a crucial component of overall well-being, but it's often stigmatized and misunderstood. This article explores the latest research on mental health and offers insights on how we can break down the barriers to treatment and support.",
+    "As technology continues to transform the way we live and work, it's important to consider the role of ethics in innovation. This article examines the latest advancements and controversies in tech ethics and offers insights on how we can move forward.",
+    "As we navigate the challenges of the modern world, emotional intelligence is increasingly important. This article explores the power of emotional intelligence and offers practical strategies for developing this skill in ourselves and others."
+];

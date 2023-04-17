@@ -933,3 +933,15 @@ div#nav nav a{
         display: flex;
     }
 }
+
+.other-articles-title {
+    font-family: nyt-cheltenham-small,nyt-cheltenham,georgia,'times new roman',times,serif;
+    font-style: italic;
+    font-size: 0.925rem;
+    line-height: 1.25em;
+    -webkit-letter-spacing: 0.01em;
+    -moz-letter-spacing: 0.01em;
+    -ms-letter-spacing: 0.01em;
+    letter-spacing: 0.01em;
+    transform-origin: top left;
+}
