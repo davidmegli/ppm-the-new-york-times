@@ -354,6 +354,44 @@ div#language a{
     background-color: rgb(50, 104, 145);
 }
 
+#modal-menu-search-input {
+    border: 0px;
+    height: 31px;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    border: 1px solid rgb(226, 226, 226);
+    box-sizing: border-box;
+    color: rgb(102, 102, 102);
+    font-size: 1rem;
+    font-family: nyt-franklin, helvetica, arial, sans-serif;
+    font-weight: normal;
+    height: 35px;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+#modal-menu-search-submit {
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: nyt-franklin, helvetica, arial, sans-serif;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: rgb(86, 123, 149);
+    border: 1px solid rgb(50, 104, 145);
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    height: 35px;
+    width: 36px;
+    color: rgb(255, 255, 255);
+    margin-right: 7px;
+}
+
 #login-icon {
     display: none;
     height: 22px;
@@ -398,6 +436,8 @@ div#language a{
         padding: 1px 10px 0px;
     }
 }
+
+
 
 #search-submit {
     display:none;
@@ -489,7 +529,7 @@ div#nav nav a{
     }
 }
 
-#footer-section li {
+#footer-section li{
     color: rgb(0, 0, 0);
     display: inline-block;
     font-family: nyt-franklin, helvetica, arial, sans-serif;

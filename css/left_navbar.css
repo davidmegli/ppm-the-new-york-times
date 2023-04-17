@@ -58,3 +58,26 @@
     color: grey;
     cursor: pointer;
 }
+
+.menu-modal-subsection {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-family: nyt-franklin, helvetica, arial, sans-serif;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+}
+
+.menu-modal-section-title {
+    font-family: nyt-franklin,helvetica,arial,sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.3em;
+    color: #121212;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: left;
+
+}
