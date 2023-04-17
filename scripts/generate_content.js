@@ -224,18 +224,18 @@ function generateContent() {
 
     //Creare qui uno carousel con 4 raggruppamenti di 2 articoli affiancati
     const carousel_container_div = document.createElement("div");
-    carousel_container_div.classList.add("carousel-container","carousel","carousel-dark","slide","col-12","row","m-0","p-0","pt-2","pb-4","border-bottom","border-dark");
+    carousel_container_div.classList.add("carousel-container","carousel","carousel-dark","slide","m-0","p-0","border-bottom","border-dark","col-12","row","pt-2","pb-4");
     carousel_container_div.setAttribute("data-bs-ride","carousel");
     carousel_container_div.setAttribute("id","carouselOpinions");
     right_articles_div.appendChild(carousel_container_div);
     const carousel_inner_div = document.createElement("div");
-    carousel_inner_div.classList.add("carousel-inner","col-12","row","m-0","p-0");
+    carousel_inner_div.classList.add("carousel-inner","m-0","p-0","col-12","row","d-flex","flex-nowrap");
     carousel_container_div.appendChild(carousel_inner_div);
     let groupsOfOpinions = 4;
     for(let i= 0; i < groupsOfOpinions; i++) {
         //div che fa da carousel-item
         const carousel_item_div = document.createElement("div");
-        carousel_item_div.classList.add("carousel-group","carousel-item","col-12","row","m-0","p-0");
+        carousel_item_div.classList.add("carousel-group","carousel-item","m-0","p-0","col-12","row");
         if(i===0) {
             carousel_item_div.classList.add("active");
         }
@@ -243,50 +243,50 @@ function generateContent() {
 
         //div che contiene i 2 div sinistro e destro
         const carousel_div = document.createElement("div");
-        carousel_div.classList.add("col-12","row","m-0","p-0");
+        carousel_div.classList.add("m-0","p-0","w-100","row","col-12");
         carousel_item_div.appendChild(carousel_div);
 
         let opinion = new Opinion();
         const carousel_link_1 = document.createElement("a");
-        carousel_link_1.classList.add("opinion-link","col-6","m-0","p-0");
+        carousel_link_1.classList.add("opinion-link","m-0","p-0","col-6"); //PROVA A RIMUOVERE  TUTTO A PARTE LE CLASSI INDISPENSABILI PER IL CAROUSEL
         carousel_link_1.href = opinion.link;
         carousel_div.appendChild(carousel_link_1);
         const carousel_div1 = document.createElement("div");
-        carousel_div1.classList.add("col-12","m-0","p-0");
+        carousel_div1.classList.add("m-0","p-0","col-12");
         carousel_div1.classList.add("pe-2","border-end");
         carousel_link_1.appendChild(carousel_div1);
         const carousel_img1 = document.createElement("img");
-        carousel_img1.classList.add("carousel-img","col-12","m-0","p-0");
+        carousel_img1.classList.add("carousel-img","m-0","p-0","col-12");
         carousel_img1.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
         carousel_div1.appendChild(carousel_img1);
         const carousel_title1 = document.createElement("h3");
-        carousel_title1.classList.add("opinion-title","col-12","m-0","p-0");
+        carousel_title1.classList.add("opinion-title","m-0","p-0","col-12");
         carousel_title1.innerHTML = opinion.title+i; //cancellare i
         carousel_div1.appendChild(carousel_title1);
         const carousel_timeToRead1 = document.createElement("p");
-        carousel_timeToRead1.classList.add("article-time-to-read","col-12","m-0","p-0");
+        carousel_timeToRead1.classList.add("article-time-to-read","m-0","p-0","col-12");
         carousel_timeToRead1.innerHTML = opinion.minutes + " min read"
         carousel_div1.appendChild(carousel_timeToRead1);
 
         opinion = new Opinion();
         const carousel_link_2 = document.createElement("a");
-        carousel_link_2.classList.add("opinion-link","col-6","m-0","p-0");
+        carousel_link_2.classList.add("opinion-link","m-0","p-0","col-6");
         carousel_link_2.href = opinion.link;
         carousel_div.appendChild(carousel_link_2);
         const carousel_div2 = document.createElement("div");
-        carousel_div2.classList.add("col-12","m-0","p-0");
+        carousel_div2.classList.add("m-0","p-0","col-12");
         carousel_div2.classList.add("ps-2");
         carousel_link_2.appendChild(carousel_div2);
         const carousel_img2 = document.createElement("img");
-        carousel_img2.classList.add("carousel-img","col-12","m-0","p-0");
+        carousel_img2.classList.add("carousel-img","m-0","p-0","col-12");
         carousel_img2.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
         carousel_div2.appendChild(carousel_img2);
         const carousel_title2 = document.createElement("h3");
-        carousel_title2.classList.add("opinion-title","col-12","m-0","p-0");
+        carousel_title2.classList.add("opinion-title","m-0","p-0","col-12");
         carousel_title2.innerHTML = opinion.title;
         carousel_div2.appendChild(carousel_title2);
         const carousel_timeToRead2 = document.createElement("p");
-        carousel_timeToRead2.classList.add("article-time-to-read","col-12","m-0","p-0");
+        carousel_timeToRead2.classList.add("article-time-to-read","m-0","p-0","col-12");
         carousel_timeToRead2.innerHTML = opinion.minutes + " min read";
         carousel_div2.appendChild(carousel_timeToRead2);
         //carousel
@@ -309,7 +309,7 @@ function generateContent() {
     const carousel_control_next = document.createElement("button");
     carousel_control_next.classList.add("carousel-control-next");
     carousel_control_next.setAttribute("type","button");
-    carousel_control_next.setAttribute("data-bs-target","carouselOpinions");
+    carousel_control_next.setAttribute("data-bs-target","#carouselOpinions");
     carousel_control_next.setAttribute("data-bs-slide","next");
     carousel_container_div.appendChild(carousel_control_next);
     const carousel_control_next_span = document.createElement("span");
