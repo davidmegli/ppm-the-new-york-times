@@ -558,7 +558,12 @@ div#nav nav a{
     max-width: 100%;
     max-height: 100%    ;
 }
-
+@media (max-width: 768px) {
+    .article-img {
+        width: 100%;
+        height: auto;
+    }
+}
 .article-title {
     font: 18px nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
     line-height: 1.15em;
@@ -758,6 +763,15 @@ div#nav nav a{
     animation: slideDown 0.35s ease-out;
 }
 
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 #main-nav.is-sticky {
     margin-left: auto;
     margin-right: auto;
@@ -789,17 +803,8 @@ div#nav nav a{
     top: -6px;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
 @media (max-width: 1033px) {
-    #main-nav, #main-nav.is-sticky, #nav.is-sticky, #nav a, #nav span, #search-button, #language a{
+    #main-nav, #main-nav.is-sticky, #nav.is-sticky, #nav a, #nav span, #search-button, #language a, #search, #search-input, #search-submit{
         display: none;
     }
     #nav {
@@ -851,7 +856,7 @@ div#nav nav a{
         visibility: visible;
         position: absolute;
         top: 0;
-        transform: scale(0.60);
+        transform: scale(0.50);
     }
 }
 
@@ -860,7 +865,8 @@ div#nav nav a{
         display: none;
     }
     #nav {
-        background-color: var(--color-gray-2);
+        background-color: #f7f7f7;
+        border-top: 1px solid #e2e2e2;
         margin-right: 0;
         margin-left: 0;
         padding-left: 0;
@@ -874,9 +880,14 @@ div#nav nav a{
         display: none;
     }
     .todays-date-low-res{
-        margin-left: 0px;
+        position: relative;
+        left: 0;
+        margin-left: 0;
         margin-top: 5px;
         display: inline;
+    }
+    #subscribe-button.subscribe-button-low-res {
+        right: 55px;
     }
     #main-nav {
         display: flex;

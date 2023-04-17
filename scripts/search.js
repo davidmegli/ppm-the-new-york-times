@@ -22,9 +22,15 @@ function toggleSearchBar() {
     searchSubmit.style.display = "none";
   }
 }
+function checkWidth() {
+  if (window.innerWidth < 1034) {
+    setSearchBarInvisible();
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("search-submit").addEventListener("click", search);
   setSearchBarInvisible();
   document.getElementById("search-button").addEventListener("click", toggleSearchBar);
+  window.addEventListener("resize",checkWidth);
 });

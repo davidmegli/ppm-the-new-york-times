@@ -28,6 +28,8 @@ let menuTimeout = null;
 let submenuTimeout = null;
 let maxTimeout = 400;
 let navbarList = null;
+let mousePassedOverMenu = false;
+let highResolutionMenu = false;
 
 //classe che rappresenta una sezione del menu
 function Section(title, subSections) {
@@ -54,7 +56,45 @@ function resetNavbar() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", setResolution);
+document.addEventListener("DOMContentLoaded", createMenu);
+window.addEventListener("resize", createMenu);
+
+function setResolution() {
+    if(window.innerWidth >= 1034) {
+        highResolutionMenu = false;
+    }
+    else {
+        highResolutionMenu = true;
+    }
+}
+function createMenu() {
+    console.log("createMenu");
+    console.log("window.innerWidth: " + window.innerWidth);
+    console.log("highResolutionMenu: " + highResolutionMenu);
+    if(window.innerWidth >= 1034) {
+        if(!highResolutionMenu) {
+            deleteMenu();
+            createLeftMenu();
+            highResolutionMenu = true;
+        }
+    }
+    else {
+        if(highResolutionMenu) {
+            deleteMenu();
+            createLowResMenu();
+            highResolutionMenu = false;
+        }
+    }
+}
+
+function deleteMenu() {
+    navbarContainer = document.getElementById("navbar-container");
+    if(navbarContainer.childNodes.length > 0)
+        navbarContainer.removeChild(navbarContainer.childNodes[0]);
+}
+
+function createLeftMenu() {
     navbarContainer = document.getElementById("navbar-container");
     let navbar = document.createElement("nav");
     navbar.setAttribute("id", "left-navbar");
@@ -141,22 +181,63 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.classList.remove("d-none");
                 clearTimeout(submenuTimeout);
             });
-
         }
     });
     navbarContainer.classList.add("d-none");
     let menuButton =  document.getElementById("desktop-section-button");
     menuButton.addEventListener("click", function () {
         navbarContainer.classList.remove("d-none");
-        menuTimeout = setTimeout(resetNavbar, maxTimeout);
     });
     navbarList.addEventListener("mouseover", function () {
+        mousePassedOverMenu = true;
         navbarContainer.classList.remove("d-none");
         clearTimeout(menuTimeout);
     });
     navbarList.addEventListener("mouseleave", function () {
-        menuTimeout = setTimeout(resetNavbar, maxTimeout);
+        if(mousePassedOverMenu) {
+            menuTimeout = setTimeout(resetNavbar, maxTimeout);
+            mousePassedOverMenu = false;
+        }
     });
+}
 
-});
+function createLowResMenu() {
+    navbarContainer = document.getElementById("navbar-container");
+    //creo un menu a schermo intero, una una div in testa che contiene il logo al centro e in fondo a destra il tasto per chiudere il menu, e una div che contiene il menu vero e proprio, con in testa la barra di ricerca con id "search" e il bottone con id "search-submit" e sotto i titoli delle sezioni come h3 e le sottosezioni  come link divisi in 2 colonne
+    let menu = document.createElement("div");
+    menu.setAttribute("id", "menu-lowres");
+    menu.classList.add("fixed-top","bg-white","container-fluid","column","h-100","p-0");//,"d-none");
+    navbarContainer.appendChild(menu);
+    let menuHeader = document.createElement("div");
+    menuHeader.setAttribute("id", "menu-header");
+    menuHeader.classList.add("row","bg-white","p-0","m-0","align-items-center","justify-content-center","border-bottom","border-1");
+    menu.appendChild(menuHeader);
+    let menuLogoLink = document.createElement("a");
+    menuLogoLink.setAttribute("href", "#");
+    menuLogoLink.setAttribute("id", "menu-logo-link1");
+    menuLogoLink.classList.add("col-6","px-0","py-3","m-0","text-center");
+    menuHeader.appendChild(menuLogoLink);
+    let menuLogo = document.createElement("img");
+    menuLogo.setAttribute("id", "menu-logo");
+    menuLogo.setAttribute("alt", "New York Times Logo");
+    menuLogo.setAttribute("src", "resources/NewYorkTimes.svg");
+    menuLogoLink.appendChild(menuLogo);
+    let menuCloseButton = document.createElement("button");
+    menuCloseButton.setAttribute("id", "menu-close-button");
+    menuCloseButton.classList.add("col-6","px-0","py-0","m-0","text-center");
+    menuCloseButton.style.width = "16px";
+    menuCloseButton.style.height = "16px";
+    menuHeader.appendChild(menuCloseButton);
+    let menuCloseButtonIcon = document.createElement("img");
+    menuCloseButtonIcon.setAttribute("id", "menu-close-button-icon");
+    menuCloseButtonIcon.setAttribute("alt", "Close Menu Icon");
+    menuCloseButtonIcon.setAttribute("src", "resources/close-button.png");
+    menuCloseButtonIcon.style.width = "16px";
+    menuCloseButtonIcon.style.height = "16px";
+    menuCloseButtonIcon.style.opacity = "0.7";
+    menuCloseButtonIcon.style.position = "absolute";
+    menuCloseButtonIcon.style.top = "20px";
+    menuCloseButtonIcon.style.right = "20px";
+    menuCloseButton.appendChild(menuCloseButtonIcon);
 
+}

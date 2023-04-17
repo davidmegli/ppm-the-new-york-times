@@ -24,7 +24,7 @@ function generateContent() {
 
         //creo un div per contenere l'immagine
         const article_div = document.createElement("div");
-        article_div.classList.add("article-div","d-inline","col-5","column");
+        article_div.classList.add("article-div","d-inline","col-12","col-sm-12","col-md-5","column");
         article_section.appendChild(article_div);
 
         numberOfArticlesPerSection = 2;
@@ -70,7 +70,7 @@ function generateContent() {
         }
         //creo un link che contiene un'immagine e linka al primo articolo della sezione
         const img_link = document.createElement("a");
-        img_link.classList.add("img-link","d-inline","col-7","row","p-0","m-0");
+        img_link.classList.add("img-link","d-inline","col-12","col-sm-12","col-md-7","row","p-0","m-0");
         img_link.setAttribute("href",firstArticle.link);
         article_section.appendChild(img_link);
         const img_div = document.createElement("div");
