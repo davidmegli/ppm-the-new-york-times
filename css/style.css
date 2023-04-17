@@ -495,11 +495,14 @@ div#nav nav a{
         border-bottom: 1px solid #ebebeb;
         padding-bottom: 10px;
     }
-    #footer-section div{
+    #footer-section div {
         width: 100%;
         border-bottom: 1px solid #ebebeb;
         border-left: none;
         padding: 10px 0px 5px 0px;
+    }
+    #footer-section a {
+        cursor: pointer;
     }
     #footer-right{
         display: none;

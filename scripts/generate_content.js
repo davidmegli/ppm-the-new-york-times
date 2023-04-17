@@ -474,7 +474,12 @@ let titles = [
     "The Impact of Social Media on Politics: Opportunities and Threats",
     "The Future of Healthcare: Challenges and Opportunities",
     "The Art of Communication: Strategies for Effective Dialogue",
-    "The Future of Artificial Intelligence: Risks and Benefits"
+    "The Future of Artificial Intelligence: Risks and Benefits",
+    "The rise of populism: Understanding its origins and implications", //political titles
+    "Navigating geopolitical tensions: The challenges of international diplomacy",
+    "The changing face of political campaigns: How technology is transforming elections",
+    "The power of youth: Examining the role of young people in shaping political movements",
+    "The role of social media in modern politics: Exploring the opportunities and risks"
 ];
 
 let texts = [  "Discover how practicing mindfulness can help you reduce stress and improve your mental well-being. This article explores practical strategies for incorporating mindfulness into your daily life.",
@@ -506,5 +511,10 @@ let texts = [  "Discover how practicing mindfulness can help you reduce stress a
     "As the world becomes more diverse, it's important to understand and appreciate different cultures. This article explores the power of cultural awareness and offers insights on how we can become more open and inclusive.",
     "Mental health is a crucial component of overall well-being, but it's often stigmatized and misunderstood. This article explores the latest research on mental health and offers insights on how we can break down the barriers to treatment and support.",
     "As technology continues to transform the way we live and work, it's important to consider the role of ethics in innovation. This article examines the latest advancements and controversies in tech ethics and offers insights on how we can move forward.",
-    "As we navigate the challenges of the modern world, emotional intelligence is increasingly important. This article explores the power of emotional intelligence and offers practical strategies for developing this skill in ourselves and others."
+    "As we navigate the challenges of the modern world, emotional intelligence is increasingly important. This article explores the power of emotional intelligence and offers practical strategies for developing this skill in ourselves and others.",
+    "Populism is on the rise around the world, but what is driving this trend and what are its implications? This article explores the roots of populism and its impact on democracy and global governance.",
+    "Geopolitical tensions are a constant in international relations, but how can countries navigate these challenges? This article examines the role of diplomacy in managing conflicts and promoting cooperation across borders.",
+    "Technology is transforming the way political campaigns are run, from social media advertising to data analytics. This article explores the latest trends in digital campaigning and the ethical considerations that come with them.",
+    "Young people have played a pivotal role in political movements throughout history, from the civil rights movement to climate activism. This article examines the power of youth in shaping political discourse and effecting change.",
+    "Social media has become a major force in modern politics, from spreading disinformation to mobilizing grassroots movements. This article examines the opportunities and risks of social media in the political sphere."
 ];
