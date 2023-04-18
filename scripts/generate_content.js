@@ -7,7 +7,7 @@ function generateContent() {
 
     const content_section1 = document.createElement("section");
     content_section1.classList.add("content-section","row","m-0","P-0");
-    content_section1.setAttribute("class","container-fluid row flex-wrap justify-content-between align-items-top mr-0 pr-0");
+    content_section1.setAttribute("class","container-fluid row flex-wrap justify-content-between align-items-top mr-0 pr-0 border-bottom pb-3");
     main_content.appendChild(content_section1);
 
     content_section1.innerHTML = "";
@@ -26,6 +26,8 @@ function generateContent() {
         article_section.classList.add("article-section","row");
         if(i===0) //se è il primo elemento azzero il padding top
             article_section.classList.add("pt-0");
+        if(i==numberOfArticles-1)
+            article_section.classList.add("article-section-last");
         left_section.appendChild(article_section);
 
         //creo un div per contenere l'immagine
@@ -196,6 +198,7 @@ function generateContent() {
         opinion_div.appendChild(opinion_author);
         const opinion_title = document.createElement("h3");
         opinion_title.innerHTML = opinion.title;
+        opinion_title.style.fontSize = "95%";
         opinion_div.appendChild(opinion_title);
         const opinion_timeToRead = document.createElement("p");
         opinion_timeToRead.innerHTML = opinion.minutes + " min read";
@@ -218,13 +221,14 @@ function generateContent() {
         else
         {
             opinion_link.classList.add("opinion-link", "col-12", "row", "m-0", "p-0", "pt-3", "pb-3", "border-bottom");
-            opinion_div.classList.add("opinion", "col-8", "row", "m-0", "p-0","pe-2");
+            opinion_div.classList.add("opinion", "col-9", "row", "m-0", "p-0","pe-2");
             opinion_author.classList.add("opinion-author", "col-12", "m-0", "p-0");
             opinion_title.classList.add("opinion-title", "col-12", "m-0", "p-0");
             opinion_timeToRead.classList.add("article-time-to-read", "col-12", "m-0", "p-0");
-            opinion_image_div.classList.add("opinion-image-div", "col-4", "row-6", "m-0", "p-0");
+            opinion_image_div.classList.add("opinion-image-div", "col-3", "row-6", "m-0", "p-0");
             opinion_img.classList.add("opinion-img", "col-12", "m-0", "p-0", "float-end");
-            opinion_img.setAttribute("src", "https://picsum.photos/520/348?random=" + Math.floor(Math.random() * 100));
+            opinion_img.setAttribute("src", "https://picsum.photos/300/300?random=" + Math.floor(Math.random() * 100));
+            opinion_img.style.borderRadius = "50%";
         }
     }
 
