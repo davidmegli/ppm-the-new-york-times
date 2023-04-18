@@ -81,13 +81,86 @@ function generateContent() {
         img_link.classList.add("img-link","d-inline","col-12","col-sm-12","col-md-7","row","p-0","m-0");
         img_link.setAttribute("href",firstArticle.link);
         article_section.appendChild(img_link);
-        const img_div = document.createElement("div");
-        img_div.classList.add("img-div","d-inline","col-12");
-        img_link.appendChild(img_div);
-        const img = document.createElement("img");
-        img.classList.add("article-img");
-        img.setAttribute("src","https://picsum.photos/520/348?random="+i);
-        img_div.appendChild(img);
+        //tiro un numero a caso, eventualmente aggiungo un carosello bootstrap 5
+        if(Math.floor(Math.random() * 10) > 5) {
+            let numberOfImages = Math.floor(Math.random() * 5) + 2;
+            const carousel_div = document.createElement("div");
+            carousel_div.classList.add("carousel-div","d-inline","col-12","align-items-top","p-0","m-0");
+            img_link.appendChild(carousel_div);
+            const carousel = document.createElement("div");
+            carousel.classList.add("carousel","carousel-fade","slide");
+            carousel.setAttribute("id","carousel"+i);
+            carousel.setAttribute("data-bs-ride","carousel");
+            carousel.setAttribute("data-bs-interval","2000");
+            carousel_div.appendChild(carousel);
+            const carousel_indicator = document.createElement("div");
+            carousel_indicator.classList.add("carousel-indicators");
+            carousel.appendChild(carousel_indicator);
+            const carousel_inner = document.createElement("div");
+            carousel_inner.classList.add("carousel-inner");
+            carousel.appendChild(carousel_inner);
+            for(let j = 0; j < numberOfImages; j++) {
+                const carousel_indicator_item = document.createElement("button");
+                carousel_indicator_item.classList.add("carousel-indicator-item");
+                carousel_indicator_item.setAttribute("type","button");
+                carousel_indicator_item.setAttribute("data-bs-target","#carousel"+i);
+                carousel_indicator_item.setAttribute("data-bs-slide-to",j);
+                carousel_indicator_item.setAttribute("aria-label","Slide "+j);
+                carousel_indicator.appendChild(carousel_indicator_item);
+                const carousel_item = document.createElement("div");
+                carousel_item.classList.add("carousel-item");
+                if(j===0) {
+                    carousel_indicator_item.classList.add("active");
+                    carousel_indicator_item.setAttribute("aria-current","true");
+                    carousel_item.classList.add("active");
+                }
+                carousel_inner.appendChild(carousel_item);
+                const img = document.createElement("img");
+                img.classList.add("article-img");
+                img.setAttribute("src","https://picsum.photos/520/348?random="+i+j);
+                carousel_item.appendChild(img);
+            }
+            const carousel_control_prev = document.createElement("button");
+            carousel_control_prev.classList.add("carousel-control-prev");
+            carousel_control_prev.setAttribute("type","button");
+            carousel_control_prev.setAttribute("data-bs-target","#carousel"+i);
+            carousel_control_prev.setAttribute("data-bs-slide","prev");
+            carousel.appendChild(carousel_control_prev);
+            const carousel_control_prev_span = document.createElement("span");
+            carousel_control_prev_span.classList.add("carousel-control-prev-icon");
+            carousel_control_prev_span.setAttribute("aria-hidden","true");
+            carousel_control_prev.appendChild(carousel_control_prev_span);
+            const carousel_control_prev_span2 = document.createElement("span");
+            carousel_control_prev_span2.classList.add("visually-hidden");
+            carousel_control_prev_span2.innerHTML = "Previous";
+            carousel_control_prev.appendChild(carousel_control_prev_span2);
+            const carousel_control_next = document.createElement("button");
+            carousel_control_next.classList.add("carousel-control-next");
+            carousel_control_next.setAttribute("type","button");
+            carousel_control_next.setAttribute("data-bs-target","#carousel"+i);
+            carousel_control_next.setAttribute("data-bs-slide","next");
+            carousel.appendChild(carousel_control_next);
+            const carousel_control_next_span = document.createElement("span");
+            carousel_control_next_span.classList.add("carousel-control-next-icon");
+            carousel_control_next_span.setAttribute("aria-hidden","true");
+            carousel_control_next.appendChild(carousel_control_next_span);
+            const carousel_control_next_span2 = document.createElement("span");
+            carousel_control_next_span2.classList.add("visually-hidden");
+            carousel_control_next_span2.innerHTML = "Next";
+            carousel_control_next.appendChild(carousel_control_next_span2);
+
+
+        }
+        else {
+            const img_div = document.createElement("div");
+            img_div.classList.add("img-div","d-inline","col-12");
+            img_link.appendChild(img_div);
+            const img = document.createElement("img");
+            img.classList.add("article-img");
+            img.setAttribute("src","https://picsum.photos/520/348?random="+i);
+            img_div.appendChild(img);
+        }
+
         const author = document.createElement("p");
         author.classList.add("article-author");
         author.innerHTML = "David Megli";
@@ -568,8 +641,8 @@ function Article() {
     /*this.title = "Lorem ipsum dolor sit amet";
     this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";*/
     let article = Math.floor(Math.random() * titles.length) + 1;
-    this.title = titles[article];
-    this.text = texts[article];
+    this.title = titles[article] || "Lorem ipsum dolor sit amet consectetur adipiscing elit Donec auctor nisl eget";
+    this.text = texts[article] || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet risus vel augue ullamcorper, at suscipit velit scelerisque. In pretium lacus sed diam efficitur accumsan.";
     this.minutes = Math.floor(Math.random() * 6) + 1;
     this.link = "#";
 }
