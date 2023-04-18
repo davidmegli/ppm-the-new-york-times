@@ -185,7 +185,7 @@ function generateContent() {
     opinion_container_div.appendChild(opinion_section_title);
     for(let i= 0; i < 8; i++) {
 
-        const opinion = new Opinion();
+        let opinion = new Opinion();
         const opinion_link = document.createElement("a");
         opinion_link.href = opinion.link;
         opinion_container_div.appendChild(opinion_link);
@@ -267,7 +267,7 @@ function generateContent() {
         carousel_div1.appendChild(carousel_img1);
         const carousel_title1 = document.createElement("h3");
         carousel_title1.classList.add("opinion-title","m-0","p-0","col-12");
-        carousel_title1.innerHTML = opinion.title+i; //cancellare i
+        carousel_title1.innerHTML = opinion.title;
         carousel_div1.appendChild(carousel_title1);
         const carousel_timeToRead1 = document.createElement("p");
         carousel_timeToRead1.classList.add("article-time-to-read","m-0","p-0","col-12");
@@ -563,7 +563,7 @@ function generateContent() {
 function Article() {
     /*this.title = "Lorem ipsum dolor sit amet";
     this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";*/
-    let article = Math.floor(Math.random() * 30) + 1;
+    let article = Math.floor(Math.random() * titles.length) + 1;
     this.title = titles[article];
     this.text = texts[article];
     this.minutes = Math.floor(Math.random() * 6) + 1;
@@ -571,8 +571,11 @@ function Article() {
 }
 
 function Opinion() {
-    this.author = "David Megli";
-    this.title = "Lorem ipsum dolor sit amet";
+    /*this.author = "David Megli";
+    this.title = "Lorem ipsum dolor sit amet";*/
+    let opinion = Math.floor(Math.random() * opinionTitles.length) + 1;
+    this.author = opinionAuthors[opinion] || "David Megli";
+    this.title = opinionTitles[opinion] || "Lorem ipsum dolor sit amet";
     this.minutes = Math.floor(Math.random() * 6) + 1;
     this.link = "#";
 }
@@ -652,4 +655,50 @@ let texts = [  "Discover how practicing mindfulness can help you reduce stress a
     "Technology is transforming the way political campaigns are run, from social media advertising to data analytics. This article explores the latest trends in digital campaigning and the ethical considerations that come with them.",
     "Young people have played a pivotal role in political movements throughout history, from the civil rights movement to climate activism. This article examines the power of youth in shaping political discourse and effecting change.",
     "Social media has become a major force in modern politics, from spreading disinformation to mobilizing grassroots movements. This article examines the opportunities and risks of social media in the political sphere."
+];
+
+let opinionTitles = [
+    "Why I'm Optimistic About the Future of Climate Action",
+    "The Case for Abolishing the Death Penalty",
+    "Why Free Speech Must Be Defended, Even When It's Offensive",
+    "The Need for Better Mental Health Care in America",
+    "Why Education Reform Is Critical to Closing the Achievement Gap",
+    "Why the U.S. Needs to Do More to Address Income Inequality",
+    "The Importance of Preserving America's National Parks",
+    "Why We Need to Rethink Immigration Policy in the 21st Century",
+    "Why Gun Control Is a Must for America's Future",
+    "The Case for Universal Basic Income",
+    "Why America Needs to Address Its Racial Inequities",
+    "Why the U.S. Should Rejoin the Paris Climate Agreement",
+    "The Need for Comprehensive Health Care Reform in America",
+    "Why Immigration Is Essential to America's Economic Growth",
+    "Why Protecting the Environment Must Be a Global Priority",
+    "Why We Must Reform the Criminal Justice System in America",
+    "The Case for Increasing the Minimum Wage",
+    "Why We Need to Address the Student Debt Crisis",
+    "Why America Must Invest More in Clean Energy",
+    "The Importance of Reducing Carbon Emissions for Our Future"
+];
+
+let opinionAuthors = [
+    "Jane Smith",
+    "David Williams",
+    "Sarah Johnson",
+    "Michael Lee",
+    "Emily Chen",
+    "John Davis",
+    "Laura Brown",
+    "Maria Hernandez",
+    "James Wilson",
+    "Jennifer Kim",
+    "Samuel Garcia",
+    "Rachel Thompson",
+    "Jessica Lee",
+    "David Nguyen",
+    "Sarah Taylor",
+    "Mark Johnson",
+    "Stephanie Brown",
+    "Lisa Davis",
+    "Emily Kim",
+    "Daniel Park"
 ];
