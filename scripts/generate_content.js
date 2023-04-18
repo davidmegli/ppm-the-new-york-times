@@ -13,6 +13,7 @@ function generateContent() {
     content_section1.innerHTML = "";
     const left_section = document.createElement("section");
     left_section.classList.add("left-content-section","col-12","col-sm-12","col-xl-9","row","pe-0","ps-4","ps-xl-3","pe-sm-0","pe-md-0","mt-10","border-end-1");
+    left_section.classList.add("justify-content-center","justify-content-sm-center","justify-content-md-start");
     content_section1.appendChild(left_section);
 
     const right_section = document.createElement("section");

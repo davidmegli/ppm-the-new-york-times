@@ -682,6 +682,12 @@ div#nav nav a{
     }
 }
 
+@media (max-width: 768px) {
+    .left-content-section {
+        border-bottom: 1px solid #e5e5e5;
+    }
+}
+
 #main-header {
     margin: 0;
     padding:0;
@@ -764,7 +770,7 @@ div#nav nav a{
 }
 
 .opinion-title{
-    font: 18px nyt-cheltenham-text-cond,nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
+    font: 16px nyt-cheltenham-text-cond,nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
     line-height: 1.15em;
     transform-origin: left top;
     -webkit-letter-spacing: 0.0025em;
@@ -780,12 +786,6 @@ div#nav nav a{
 .carousel-control-prev .carousel-control-next {
     position: relative;
     top: 20px;
-}
-
-@media (max-width: 960px) {
-    .article-right-1-img {
-
-    }
 }
 
 .right-section-subtitle {
