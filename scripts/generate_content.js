@@ -5,14 +5,19 @@ function generateContent() {
     const anotherArticleTitleLength = 35;
     const anotherArticleTextLength = 75;
 
-    main_content.innerHTML = "";
+    const content_section1 = document.createElement("section");
+    content_section1.classList.add("content-section","row","m-0","P-0");
+    content_section1.setAttribute("class","container-fluid row flex-wrap justify-content-between align-items-top mr-0 pr-0");
+    main_content.appendChild(content_section1);
+
+    content_section1.innerHTML = "";
     const left_section = document.createElement("section");
     left_section.classList.add("left-content-section","col-12","col-xl-9","row","pe-0","ps-4","ps-xl-3","mt-10","border-end-1");
-    main_content.appendChild(left_section);
+    content_section1.appendChild(left_section);
 
     const right_section = document.createElement("section");
     right_section.classList.add("right-content-section","col-12","col-xl-3","column","pt-2","pe-4","mr-0","mr-xl-0","px-xl-0");
-    main_content.appendChild(right_section);
+    content_section1.appendChild(right_section);
 
     //genero gli articoli di sinistra (principali)
     for (let i = 0; i < numberOfArticles; i++) {
@@ -420,7 +425,137 @@ function generateContent() {
         in_case_you_missed_it_img.classList.add("other-articles-img");
         in_case_you_missed_it_img.setAttribute("src", "https://picsum.photos/300/300?random=" + Math.floor(Math.random() * 100));
         in_case_you_missed_it_link.appendChild(in_case_you_missed_it_img);
+    }
 
+    //second content section
+    const content_section2 = document.createElement("section");
+    content_section2.classList.add("content-section","row","m-0","p-0");
+    content_section2.setAttribute("class","container-fluid flex-wrap row justify-content-between align-items-top mr-0 pr-0 pb-3 border-bottom");
+    main_content.appendChild(content_section2);
+
+    const content_section2_title = document.createElement("h3");
+    content_section2_title.classList.add("col-12","m-0","p-0","py-2");
+    content_section2_title.classList.add("content-section-title");
+    content_section2_title.innerHTML = "More News";
+    content_section2.appendChild(content_section2_title);
+
+    const content_section2_container = document.createElement("div");
+    content_section2_container.classList.add("col-12","row","m-0","p-0");
+    content_section2_container.classList.add("content-section-container");
+    content_section2.appendChild(content_section2_container);
+
+    //left column (col-3)
+    const content_section2_left = document.createElement("div");
+    content_section2_left.classList.add("col-12","col-sm-12","col-md-4","col-lg-3","column","m-0","p-0","pe-3");
+    content_section2_left.classList.add("content-section-left");
+    content_section2_container.appendChild(content_section2_left); //ci devo aggiungere i 3 articoli in verticale (3x row-4)
+    for(let i=0; i<3; i++){
+
+        let article = new Article();
+        const content_section2_left_article = document.createElement("a");
+        content_section2_left_article.classList.add("col-12","row","m-0","p-0","py-3","row-3");
+        if(i<2)
+            content_section2_left_article.classList.add("border-bottom");
+        content_section2_left_article.classList.add("content-section-left-article");
+        content_section2_left_article.setAttribute("href","#");
+        content_section2_left.appendChild(content_section2_left_article);
+
+        const content_section2_left_article_title = document.createElement("h3");
+        content_section2_left_article_title.classList.add("col-12","m-0","p-0");
+        content_section2_left_article_title.classList.add("article-right-small-title");
+        content_section2_left_article_title.innerHTML = article.title;
+        content_section2_left_article.appendChild(content_section2_left_article_title);
+
+        const content_section2_left_article_text = document.createElement("p");
+        content_section2_left_article_text.classList.add("col-12","m-0","p-0");
+        content_section2_left_article_text.classList.add("article-right-small-text");
+        content_section2_left_article_text.innerHTML = article.text;
+        content_section2_left_article.appendChild(content_section2_left_article_text);
+
+        const content_section2_left_article_timeToRead = document.createElement("p");
+        content_section2_left_article_timeToRead.classList.add("col-12","m-0","p-0");
+        content_section2_left_article_timeToRead.classList.add("article-time-to-read");
+        content_section2_left_article_timeToRead.innerHTML = article.minutes + " min read";
+        content_section2_left_article.appendChild(content_section2_left_article_timeToRead);
+    }
+
+    //center column (col-6)
+    const content_section2_center = document.createElement("div");
+    content_section2_center.classList.add("col-12","col-sm-12","col-md-8","col-lg-6","column","m-0","p-0","px-3","pe-lg-3","pd-sm-4","pe-4");
+    content_section2_center.classList.add("content-section-center");
+    content_section2_container.appendChild(content_section2_center); //ci devo aggiungere 1 immagine grande (row-8) e 1 articolo in verticale (row-4)
+
+    article = new Article();
+    const content_section2_center_link = document.createElement("a");
+    content_section2_center_link.classList.add("col-12","row","m-0","p-0","py-3","row-8");
+    content_section2_center_link.classList.add("content-section-center-link");
+    content_section2_center_link.setAttribute("href",article.link);
+    content_section2_center.appendChild(content_section2_center_link);
+
+    const content_section2_center_img = document.createElement("img");
+    content_section2_center_img.classList.add("col-12","m-0","p-0");
+    content_section2_center_img.classList.add("content-section-center-img");
+    content_section2_center_img.setAttribute("src", "https://picsum.photos/600/400?random=" + Math.floor(Math.random() * 100));
+    content_section2_center_link.appendChild(content_section2_center_img);
+
+    const content_section2_center_author = document.createElement("p");
+    content_section2_center_author.classList.add("col-12","m-0","p-0");
+    content_section2_center_author.classList.add("content-section-center-author");
+    content_section2_center_author.innerHTML = "By " + article.author;
+
+    const content_section2_center_article = document.createElement("a");
+    content_section2_center_article.classList.add("col-12","row","m-0","p-0","py-3","row-4");
+    content_section2_center_article.classList.add("content-section-center-article");
+    content_section2_center_article.setAttribute("href",article.link);
+    content_section2_center.appendChild(content_section2_center_article);
+
+    const content_section2_center_article_title = document.createElement("h3");
+    content_section2_center_article_title.classList.add("col-12","m-0","p-0");
+    content_section2_center_article_title.classList.add("article-right-small-title");
+    content_section2_center_article_title.innerHTML = article.title;
+    content_section2_center_article.appendChild(content_section2_center_article_title);
+
+    const content_section2_center_article_text = document.createElement("p");
+    content_section2_center_article_text.classList.add("col-12","m-0","p-0");
+    content_section2_center_article_text.classList.add("article-right-small-text");
+    content_section2_center_article_text.innerHTML = article.text;
+    content_section2_center_article.appendChild(content_section2_center_article_text);
+
+    const content_section2_center_article_timeToRead = document.createElement("p");
+    content_section2_center_article_timeToRead.classList.add("col-12","m-0","p-0");
+    content_section2_center_article_timeToRead.classList.add("article-time-to-read");
+    content_section2_center_article_timeToRead.innerHTML = article.minutes + " min read";
+    content_section2_center_article.appendChild(content_section2_center_article_timeToRead);
+
+    //right column (col-3)
+    const content_section2_right = document.createElement("div");
+    content_section2_right.classList.add("col-12","col-sm-12","col-md-12","col-lg-3","row","m-0","p-0","ps-lg-2","ps-0","ps-sm-0");
+    content_section2_right.classList.add("content-section-right");
+    content_section2_container.appendChild(content_section2_right); //ci devo aggiungere 1 immagine grande (row-8) e 2 articoli in verticale (2x row-4)
+
+    for(let i=0 ; i<6 ; i++) {
+        article = new Article();
+        const content_section2_right_link = document.createElement("a");
+        content_section2_right_link.classList.add("col-4","col-sm-4","col-lg-12","row","m-0","p-0","py-3","px-lg-0","px-2","row-2");
+        content_section2_right_link.classList.add("content-section-right-link");
+        if(i<5)
+            content_section2_right_link.classList.add("border-bottom");
+        else
+            content_section2_right_link.classList.add("content-section2-right-link-last");
+        content_section2_right_link.setAttribute("href",article.link);
+        content_section2_right.appendChild(content_section2_right_link);
+
+        const content_section2_right_title = document.createElement("h3");
+        content_section2_right_title.classList.add("col-12","m-0","p-0");
+        content_section2_right_title.classList.add("article-right-small-title");
+        content_section2_right_title.innerHTML = article.title;
+        content_section2_right_link.appendChild(content_section2_right_title);
+
+        const content_section2_right_timeToRead = document.createElement("p");
+        content_section2_right_timeToRead.classList.add("col-12","m-0","p-0");
+        content_section2_right_timeToRead.classList.add("article-time-to-read");
+        content_section2_right_timeToRead.innerHTML = article.minutes + " min read";
+        content_section2_right_link.appendChild(content_section2_right_timeToRead);
     }
 
 }

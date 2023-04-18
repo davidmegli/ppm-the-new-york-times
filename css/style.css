@@ -703,7 +703,7 @@ div#nav nav a{
     -webkit-font-smoothing: antialiased;
 }
 
-#main-content {
+#main-content, .content-section {
     margin: 0;
     padding: 0;
 }
@@ -712,7 +712,7 @@ div#nav nav a{
     position: relative;
 }
 
-.right-section-title {
+.right-section-title, .content-section-title {
     font-family: nyt-franklin,helvetica,arial,sans-serif;
     font-size: 0.875rem;
     line-height: 1.3em;
@@ -734,7 +734,7 @@ div#nav nav a{
     text-transform: uppercase;
 }
 
-.opinion-title {
+.opinion-title{
     font: 18px nyt-cheltenham-text-cond,nyt-cheltenham,helvetica,georgia,'times new roman',times,serif;
     line-height: 1.15em;
     transform-origin: left top;
@@ -947,4 +947,18 @@ div#nav nav a{
     -ms-letter-spacing: 0.01em;
     letter-spacing: 0.01em;
     transform-origin: top left;
+}
+
+.content-section-center, .content-section-left {
+    border-right: 1px solid #e2e2e2;
+}
+
+@media (max-width: 991px) {
+    .content-section-center, .content-section-left {
+        border-right: none;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    .content-section2-right-link-last {
+        border-bottom: 1px solid #e2e2e2;
+    }
 }
