@@ -42,6 +42,10 @@
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     border: none;
     background: transparent;
@@ -485,6 +489,10 @@ div#nav nav a{
     background-color: var(--color-gray-1);
 }
 
+#footer-section a {
+    cursor: pointer;
+}
+
 @media (max-width: 1149px) {
     #footer-section {
         display: flex;
@@ -501,9 +509,7 @@ div#nav nav a{
         border-left: none;
         padding: 10px 0px 5px 0px;
     }
-    #footer-section a {
-        cursor: pointer;
-    }
+
     #footer-right{
         display: none;
     }
@@ -528,7 +534,10 @@ div#nav nav a{
 
 @media (max-width: 1149px) {
     #footer-section ul {
-        display: none;
+        /*display: none;*/
+    }
+    .section-link:link{
+        text-decoration: none;
     }
 }
 
