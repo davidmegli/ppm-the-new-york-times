@@ -275,6 +275,11 @@ div#nav nav{
     }
 }
 
+@media (max-width: 739px) {
+    div#nav {
+    }
+}
+
 div#nav a{
     padding: 0;
 }
@@ -300,6 +305,12 @@ hr.solid {
       padding: 18px 0;
       height: 34px;
       background-color: #fff;
+}
+
+@media (max-width: 739px) {
+    #header-top, #header-bot {
+        width: 100%;
+    }
 }
 
 #desktop-section-button{
@@ -409,6 +420,12 @@ div#language a{
     }
     #login-button {
         display: none;
+    }
+}
+
+@media (max-width: 739px) {
+    #login-icon {
+        margin-right: 0;
     }
 }
 
@@ -887,7 +904,7 @@ div#nav nav a{
         display: inline;
         right: 20px;
         top: 12px;
-        z-index: 70;
+        z-index: 40;
         border-radius: 3px;
         cursor: pointer;
         transition: all 0.6s ease 0s;
@@ -927,9 +944,14 @@ div#nav nav a{
         padding-left: 0;
         padding-right: 0;
         position:relative;
-        left: -11px;
+
         height: 40px;
-        width: 110%;
+        width: 100%;
+    }
+    body {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
     hr.solid{
         display: none;
@@ -942,7 +964,8 @@ div#nav nav a{
         display: inline;
     }
     #subscribe-button.subscribe-button-low-res {
-        right: 55px;
+        right: 25px;
+        top:10px;
     }
     #main-nav {
         display: flex;

@@ -7,16 +7,16 @@ function generateContent() {
 
     const content_section1 = document.createElement("section");
     content_section1.classList.add("content-section","row","m-0","P-0");
-    content_section1.setAttribute("class","container-fluid row flex-wrap justify-content-between align-items-top mr-0 pr-0 border-bottom pb-3");
+    content_section1.setAttribute("class","container-fluid row flex-wrap col-12 col-sm-12 justify-content-between align-items-top mr-0 pr-0 border-bottom pb-3");
     main_content.appendChild(content_section1);
 
     content_section1.innerHTML = "";
     const left_section = document.createElement("section");
-    left_section.classList.add("left-content-section","col-12","col-xl-9","row","pe-0","ps-4","ps-xl-3","mt-10","border-end-1");
+    left_section.classList.add("left-content-section","col-12","col-sm-12","col-xl-9","row","pe-0","ps-4","ps-xl-3","pe-sm-0","pe-md-0","mt-10","border-end-1");
     content_section1.appendChild(left_section);
 
     const right_section = document.createElement("section");
-    right_section.classList.add("right-content-section","col-12","col-xl-3","column","pt-2","pe-4","mr-0","mr-xl-0","px-xl-0");
+    right_section.classList.add("right-content-section","col-12","col-sm-12","col-xl-3","column","pt-2","pe-0","pe-sm-0","pe-md-4","mr-0","mr-xl-0","px-xl-0");
     content_section1.appendChild(right_section);
 
     //genero gli articoli di sinistra (principali)
@@ -78,7 +78,7 @@ function generateContent() {
         }
         //creo un link che contiene un'immagine e linka al primo articolo della sezione
         const img_link = document.createElement("a");
-        img_link.classList.add("img-link","d-inline","col-12","col-sm-12","col-md-7","row","p-0","m-0");
+        img_link.classList.add("img-link","d-inline","col-12","col-sm-12","col-md-7","row","p-md-0","pt-sm-2","pt-3","m-0");
         img_link.setAttribute("href",firstArticle.link);
         article_section.appendChild(img_link);
         //tiro un numero a caso, eventualmente aggiungo un carosello bootstrap 5
