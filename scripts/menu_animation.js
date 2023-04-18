@@ -30,7 +30,8 @@ window.addEventListener("scroll", () => {
         nav.classList.add(toggleClass);
         menuButton.classList.add(toggleClass);
         nytimesLogo.classList.add(toggleClass);
-        menuSearch.removeChild(menuButton);
+        if (menuSearch.contains(nytimesLogo))
+            menuSearch.removeChild(menuButton);
         nav.insertBefore(menuButton, nav.firstChild);
         nav.insertBefore(nytimesLogo, nav.firstChild);
     } else {
@@ -38,8 +39,10 @@ window.addEventListener("scroll", () => {
         nav.classList.remove(toggleClass);
         menuButton.classList.remove(toggleClass);
         nytimesLogo.classList.remove(toggleClass);
-        nav.removeChild(menuButton);
-        nav.removeChild(nytimesLogo);
+        if (nav.contains(menuButton))
+            nav.removeChild(menuButton);
+        if (nav.contains(nytimesLogo))
+            nav.removeChild(nytimesLogo);
         menuSearch.insertBefore(nytimesLogo, menuSearch.firstChild);
         menuSearch.insertBefore(menuButton, menuSearch.firstChild);
     }
