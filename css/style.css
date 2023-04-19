@@ -1111,3 +1111,55 @@ div#nav nav a{
         display: none;
     }
 }
+
+#cookies {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    background: white;
+    border-top: 1px solid black;
+    height: 240px;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-family: nyt-franklin,arial,helvetica,sans-serif;
+    color: #333;
+}
+
+#cookies p {
+    text-align: start;
+    font: 14px nyt-franklin,arial,helvetica,sans-serif;
+    color: #333;
+}
+
+#cookies-text-container {
+    padding: 0 70px 0 70px;
+}
+
+#cookies h3:hover {
+    color: black;
+}
+#cookies h3 {
+    font: 15px nyt-franklin,arial,helvetica,sans-serif;
+    text-align: center;
+}
+
+#accept-cookies-button, #reject-cookies-button {
+    border: none;
+    display: inline-block;
+    padding: 13px 18px 12px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 3px;
+    font-size: 0.8125rem;
+    line-height: 90%;
+    font-family: nyt-franklin, helvetica, arial, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    margin: 6px 0 0 0;
+    width: 240px;
+}

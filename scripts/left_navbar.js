@@ -38,6 +38,9 @@ let maxTimeout = 400;
 let navbarList = null;
 let mousePassedOverMenu = false;
 let highResolutionMenu = false;
+let leftMenuCreated = false;
+let menuListItemsOffset = [];
+let verticalOffset = -15;
 
 //classe che rappresenta una sezione del menu
 function Section(title, subSections) {
@@ -81,6 +84,7 @@ function createMenu() {
     console.log("highResolutionMenu: " + highResolutionMenu);
     if(window.innerWidth >= 1034) { //appena la risoluzione è maggiore di 1034
         if(!highResolutionMenu) { //se prima del resize era a bassa risoluzione
+            console.log("Resolution changed from low to high");
             deleteMenu(); //cancello il vecchio menu
             removeModalClassesFromMenuButton(); //rimuovo le classi bootstrap che aggiungevano il modal
             createLeftMenu(); //creo il nuovo menu
@@ -89,6 +93,7 @@ function createMenu() {
     }
     else {
         if(highResolutionMenu) { //se sono passato da high a low resolution
+            console.log("Resolution changed from high to low");
             deleteMenu();
             addModalClassesToMenuButton(); //aggiungo le classi bootstrap che aggiungono il modal
             createLowResMenu();
@@ -118,6 +123,7 @@ function createLeftMenu() {
     navbarList = document.createElement("ul");
     navbarList.classList.add("navbar-nav","list-group","list-group-flush","col-12","align-items-start","pt-3");
     navbar.appendChild(navbarList);
+    let i = 0;
     MainSection.subSections.forEach(function (section) {
         let navbarListItem = document.createElement("li");
         navbarListItem.classList.add("nav-item", "list-group-item","list-group-item-action","p-0");
@@ -171,8 +177,16 @@ function createLeftMenu() {
             let estimatedHeightPerElement = 27;
             let estimatedHeight = estimatedHeightPerElement * (section.subSections.length + 1 + 1 / section.subSections.length);
             subMenu.style.height = estimatedHeight + "px";
-            let verticalOffset = -15;
-            subMenu.style.top = (navbarListItem.offsetTop + verticalOffset) + "px";
+
+            console.log("NavbarListItem: "+ navbarListItem);
+            console.log("NavbarListItem.offsetTop: "+ navbarListItem.offsetTop);
+            if(!leftMenuCreated) {
+                menuListItemsOffset.push(navbarListItem.offsetTop);
+                subMenu.style.top = (navbarListItem.offsetTop + verticalOffset) + "px";
+            }
+            else {
+                subMenu.style.top = (menuListItemsOffset[i] + verticalOffset) + "px";
+            }
             navbar.addEventListener("mouseleave", function () { //nascondo il sottomenu quando esco dal nav
                 subMenu.classList.add("d-none");
             });
@@ -209,7 +223,10 @@ function createLeftMenu() {
                 navbarContainer.classList.add("d-none");
             });
         }
+        i++;
     });
+    if(!leftMenuCreated)
+        leftMenuCreated = true;
     navbarContainer.classList.add("d-none");
     let menuButton =  document.getElementById("desktop-section-button");
     menuButton.addEventListener("click", function () {
