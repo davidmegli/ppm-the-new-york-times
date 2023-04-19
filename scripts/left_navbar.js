@@ -116,7 +116,7 @@ function createLeftMenu() {
     navbar.setAttribute("class", "navbar navbar-light bg-light flex-column pt-0 bg-white");
     navbarContainer.appendChild(navbar);
     navbarList = document.createElement("ul");
-    navbarList.classList.add("navbar-nav","list-group","list-group-flush","col-12","align-items-start");
+    navbarList.classList.add("navbar-nav","list-group","list-group-flush","col-12","align-items-start","pt-3");
     navbar.appendChild(navbarList);
     MainSection.subSections.forEach(function (section) {
         let navbarListItem = document.createElement("li");
