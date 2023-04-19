@@ -483,6 +483,8 @@ function generateContent() {
         in_case_you_missed_it_link.classList.add("col-12","row","m-0","p-0", "border-bottom", "pb-3");
         in_case_you_missed_it_link.classList.add("mt-3");
         in_case_you_missed_it_link.classList.add("other-articles");
+        if(i===inCaseYouMissedItArticles-1)
+            in_case_you_missed_it_link.classList.remove("border-bottom");
         in_case_you_missed_it_link.setAttribute("href", "#");
         right_articles_div.appendChild(in_case_you_missed_it_link);
         const in_case_you_missed_it_div = document.createElement("div");
@@ -512,13 +514,13 @@ function generateContent() {
     main_content.appendChild(content_section2);
 
     const content_section2_title = document.createElement("h3");
-    content_section2_title.classList.add("col-12","m-0","p-0","py-2");
+    content_section2_title.classList.add("col-12","m-0","p-0","py-2","ps-2","ps-sm-2","ps-md-0");
     content_section2_title.classList.add("content-section-title");
     content_section2_title.innerHTML = "More News";
     content_section2.appendChild(content_section2_title);
 
     const content_section2_container = document.createElement("div");
-    content_section2_container.classList.add("col-12","row","m-0","p-0");
+    content_section2_container.classList.add("col-12","row","m-0","p-0","ps-2","ps-sm-2","ps-md-0");
     content_section2_container.classList.add("content-section-container");
     content_section2.appendChild(content_section2_container);
 

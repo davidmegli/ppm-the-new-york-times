@@ -1000,6 +1000,10 @@ div#nav nav a{
     transform-origin: top left;
 }
 
+@media (max-width: 1199px) {
+
+}
+
 .content-section-center, .content-section-left {
     border-right: 1px solid #e2e2e2;
 }
