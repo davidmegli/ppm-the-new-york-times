@@ -52,7 +52,9 @@ window.addEventListener("resize", resize);
 
 function resize() {
     if (window.innerWidth < 1034) {
-        todaysDateParent.removeChild(todaysDate);
+        if(todaysDateParent.contains(todaysDate))
+            todaysDateParent.removeChild(todaysDate);
+        if(subscribeButtonParent.contains(subscribeButton))
             subscribeButtonParent.removeChild(subscribeButton);
         navContainer.appendChild(todaysDate);
         navContainer.appendChild(subscribeButton);
@@ -60,11 +62,15 @@ function resize() {
         subscribeButton.classList.add("subscribe-button-low-res");
     }
     else {
-        navContainer.removeChild(todaysDate);
-        navContainer.removeChild(subscribeButton);
+        if(navContainer.contains(todaysDate))
+            navContainer.removeChild(todaysDate);
+        if(navContainer.contains(subscribeButton))
+            navContainer.removeChild(subscribeButton);
         todaysDateParent.appendChild(todaysDate);
         subscribeButtonParent.insertBefore(subscribeButton,subscribeButtonParent.firstChild);
-        todaysDate.classList.remove("todays-date-low-res");
-        subscribeButton.classList.remove("subscribe-button-low-res");
+        if(todaysDate.classList.contains("todays-date-low-res"))
+            todaysDate.classList.remove("todays-date-low-res");
+        if(subscribeButton.classList.contains("subscribe-button-low-res"))
+            subscribeButton.classList.remove("subscribe-button-low-res");
     }
 }

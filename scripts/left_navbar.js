@@ -187,11 +187,11 @@ function createLeftMenu() {
             });
             subMenu.addEventListener("mouseleave", function () { //nascondo il sottomenu dopo un timeout dall'uscita del sottomenu
                 submenuTimeout = setTimeout(function () {
-                    this.classList.add("d-none");
+                    subMenu.classList.add("d-none");
                 }, maxTimeout);
             });
             subMenu.addEventListener("mouseover", function () { //quando entro nel sottomenu mi assicuro che resti visibile durante il mouseover
-                this.classList.remove("d-none");
+                subMenu.classList.remove("d-none");
                 clearTimeout(submenuTimeout);
             });
         }
