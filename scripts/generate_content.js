@@ -510,7 +510,7 @@ function generateContent() {
     //second content section
     const content_section2 = document.createElement("section");
     content_section2.classList.add("content-section","row","m-0","p-0");
-    content_section2.setAttribute("class","container-fluid flex-wrap row justify-content-between align-items-top mr-0 pr-0 pb-3 border-bottom");
+    content_section2.setAttribute("class","container-fluid flex-wrap row justify-content-between align-items-top mr-0 pr-0 pb-3 border-bottom border-2");
     main_content.appendChild(content_section2);
 
     const content_section2_title = document.createElement("h3");
@@ -638,14 +638,197 @@ function generateContent() {
         content_section2_right_link.appendChild(content_section2_right_timeToRead);
     }
 
+
+    //third content section
+    const news_content_section = document.createElement("section");
+    news_content_section.classList.add("content-section","row","m-0","p-0");
+    news_content_section.setAttribute("class","container-fluid flex-wrap row justify-content-start align-items-top mr-0 pr-0 pb-3 border-bottom");
+    main_content.appendChild(news_content_section);
+
+    const content_section3_title = document.createElement("h3");
+    content_section3_title.classList.add("col-12","m-0","p-0","py-2","ps-2","ps-sm-2","ps-md-0");
+    content_section3_title.classList.add("content-section-title");
+    content_section3_title.innerHTML = "News";
+    content_section3_title.classList.add("text-uppercase");
+    news_content_section.appendChild(content_section3_title);
+
+    let numberOfNewsArticles = 17;
+    for (let i=0 ; i<numberOfNewsArticles ; i++) {
+        article = new Article();
+        const news_content_section_link = document.createElement("a");
+        news_content_section_link.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2", "container", "m-0", "px-2", "py-3");
+        news_content_section_link.classList.add("content-section-link");
+        news_content_section_link.setAttribute("href", article.link);
+        news_content_section.appendChild(news_content_section_link);
+        const news_content_section_subject_title = document.createElement("h3");
+        news_content_section_subject_title.classList.add("col-12", "m-0", "p-0");
+        news_content_section_subject_title.classList.add("content-section-title");
+        news_content_section_subject_title.style.fontSize = "0.8rem";
+        news_content_section_subject_title.innerHTML = subjects[i % subjects.length];
+        news_content_section_link.appendChild(news_content_section_subject_title);
+        const news_content_section_image = document.createElement("img");
+        news_content_section_image.classList.add("col-12", "m-0", "p-0", "pt-1", "row-2");
+        news_content_section_image.classList.add("content-section-image");
+        news_content_section_image.setAttribute("src", "https://picsum.photos/300/200?random=" + Math.floor(Math.random() * 100));
+        news_content_section_link.appendChild(news_content_section_image);
+        const news_content_section_text1 = document.createElement("p");
+        news_content_section_text1.classList.add("col-12", "m-0", "p-0", "pt-2");
+        news_content_section_text1.classList.add("content-news-section");
+        news_content_section_text1.innerHTML = article.title;
+        news_content_section_link.appendChild(news_content_section_text1);
+        const news_content_section_text2 = document.createElement("p");
+        news_content_section_text2.classList.add("col-12", "m-0", "p-0", "pt-2");
+        news_content_section_text2.classList.add("content-news-section");
+        article = new Article();
+        news_content_section_text2.innerHTML = article.title;
+        news_content_section_link.appendChild(news_content_section_text2);
+    }
+
+
+    //fourth content section
+    const opinion_content_section = document.createElement("section");
+    opinion_content_section.classList.add("content-section","row","m-0","p-0");
+    opinion_content_section.setAttribute("class","container-fluid flex-wrap row justify-content-start align-items-top mr-0 pr-0 pb-3 border-bottom");
+    main_content.appendChild(opinion_content_section);
+
+    const content_section4_title = document.createElement("h3");
+    content_section4_title.classList.add("col-12","m-0","p-0","py-2","ps-2","ps-sm-2","ps-md-0");
+    content_section4_title.classList.add("content-section-title");
+    content_section4_title.innerHTML = "Opinion";
+    content_section4_title.classList.add("text-uppercase");
+    opinion_content_section.appendChild(content_section4_title);
+
+    let numberOfOpinions = 5;
+    for (let i=0 ; i<numberOfOpinions ; i++) {
+        let opinion = new Opinion();
+        const opinion_content_section_link = document.createElement("a");
+        opinion_content_section_link.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3","col-xl-2", "container", "m-0", "px-2", "py-3");
+        opinion_content_section_link.classList.add("content-section-link");
+        opinion_content_section_link.setAttribute("href",opinion.link);
+        opinion_content_section.appendChild(opinion_content_section_link);
+        const opinion_content_section_subject_title = document.createElement("h3");
+        opinion_content_section_subject_title.classList.add("col-12", "m-0", "p-0");
+        opinion_content_section_subject_title.classList.add("content-section-title");
+        opinion_content_section_subject_title.style.fontSize = "0.8rem";
+        opinion_content_section_subject_title.innerHTML = opinionSubjects[i % opinionSubjects.length];
+        opinion_content_section_link.appendChild(opinion_content_section_subject_title);
+        const opinion_content_section_image = document.createElement("img");
+        opinion_content_section_image.classList.add("col-12", "m-0", "p-0","pt-1", "row-2");
+        opinion_content_section_image.classList.add("content-section-image");
+        opinion_content_section_image.setAttribute("src","https://picsum.photos/300/200?random=" + Math.floor(Math.random() * 100));
+        opinion_content_section_link.appendChild(opinion_content_section_image);
+        const opinion_content_section_text1 = document.createElement("p");
+        opinion_content_section_text1.classList.add("col-12", "m-0", "p-0","pt-2");
+        opinion_content_section_text1.classList.add("content-news-section");
+        opinion_content_section_text1.innerHTML = opinion.title;
+        opinion_content_section_link.appendChild(opinion_content_section_text1);
+        const opinion_content_section_text2 = document.createElement("p");
+        opinion_content_section_text2.classList.add("col-12", "m-0", "p-0","pt-2");
+        opinion_content_section_text2.classList.add("content-news-section");
+        opinion = new Opinion();
+        opinion_content_section_text2.innerHTML = opinion.title;
+        opinion_content_section_link.appendChild(opinion_content_section_text2);
+    }
+
+    //fifth content section
+    const arts_content_section = document.createElement("section");
+    arts_content_section.classList.add("content-section","row","m-0","p-0");
+    arts_content_section.setAttribute("class","container-fluid flex-wrap row justify-content-start align-items-top mr-0 pr-0 pb-3 border-bottom");
+    main_content.appendChild(arts_content_section);
+
+    const content_section5_title = document.createElement("h3");
+    content_section5_title.classList.add("col-12","m-0","p-0","py-2","ps-2","ps-sm-2","ps-md-0");
+    content_section5_title.classList.add("content-section-title");
+    content_section5_title.innerHTML = "Arts";
+    content_section5_title.classList.add("text-uppercase");
+    arts_content_section.appendChild(content_section5_title);
+
+    let numberOfArtsArticles = 10;
+    for (let i=0 ; i<numberOfArtsArticles ; i++) {
+        let article = new Article();
+        const arts_content_section_link = document.createElement("a");
+        arts_content_section_link.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3","col-xl-2", "container", "m-0", "px-2", "py-3");
+        arts_content_section_link.classList.add("content-section-link");
+        arts_content_section_link.setAttribute("href",article.link);
+        arts_content_section.appendChild(arts_content_section_link);
+        const arts_content_section_subject_title = document.createElement("h3");
+        arts_content_section_subject_title.classList.add("col-12", "m-0", "p-0");
+        arts_content_section_subject_title.classList.add("content-section-title");
+        arts_content_section_subject_title.style.fontSize = "0.8rem";
+        arts_content_section_subject_title.innerHTML = artsSubjects[i % artsSubjects.length];
+        arts_content_section_link.appendChild(arts_content_section_subject_title);
+        const arts_content_section_image = document.createElement("img");
+        arts_content_section_image.classList.add("col-12", "m-0", "p-0","pt-1", "row-2");
+        arts_content_section_image.classList.add("content-section-image");
+        arts_content_section_image.setAttribute("src","https://picsum.photos/300/200?random=" + Math.floor(Math.random() * 100));
+        arts_content_section_link.appendChild(arts_content_section_image);
+        const arts_content_section_text1 = document.createElement("p");
+        arts_content_section_text1.classList.add("col-12", "m-0", "p-0","pt-2");
+        arts_content_section_text1.classList.add("content-news-section");
+        arts_content_section_text1.innerHTML = article.title;
+        arts_content_section_link.appendChild(arts_content_section_text1);
+        const arts_content_section_text2 = document.createElement("p");
+        arts_content_section_text2.classList.add("col-12", "m-0", "p-0","pt-2");
+        arts_content_section_text2.classList.add("content-news-section");
+        article = new Article();
+        arts_content_section_text2.innerHTML = article.title;
+        arts_content_section_link.appendChild(arts_content_section_text2);
+    }
+
+    //sixth content section
+    const living_content_section = document.createElement("section");
+    living_content_section.classList.add("content-section","row","m-0","p-0");
+    living_content_section.setAttribute("class","container-fluid flex-wrap row justify-content-start align-items-top mr-0 pr-0 pb-3"); //ho rimosso il border-bottom
+    main_content.appendChild(living_content_section);
+
+    const content_section6_title = document.createElement("h3");
+    content_section6_title.classList.add("col-12","m-0","p-0","py-2","ps-2","ps-sm-2","ps-md-0");
+    content_section6_title.classList.add("content-section-title");
+    content_section6_title.innerHTML = "Living";
+    content_section6_title.classList.add("text-uppercase");
+    living_content_section.appendChild(content_section6_title);
+
+    let numberOfLivingArticles = 10;
+    for (let i=0 ; i<numberOfLivingArticles ; i++) {
+        let article = new Article();
+        const living_content_section_link = document.createElement("a");
+        living_content_section_link.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3","col-xl-2", "container", "m-0", "px-2", "py-3");
+        living_content_section_link.classList.add("content-section-link");
+        living_content_section_link.setAttribute("href",article.link);
+        living_content_section.appendChild(living_content_section_link);
+        const living_content_section_subject_title = document.createElement("h3");
+        living_content_section_subject_title.classList.add("col-12", "m-0", "p-0");
+        living_content_section_subject_title.classList.add("content-section-title");
+        living_content_section_subject_title.style.fontSize = "0.8rem";
+        living_content_section_subject_title.innerHTML = artsSubjects[i % artsSubjects.length];
+        living_content_section_link.appendChild(living_content_section_subject_title);
+        const living_content_section_image = document.createElement("img");
+        living_content_section_image.classList.add("col-12", "m-0", "p-0","pt-1", "row-2");
+        living_content_section_image.classList.add("content-section-image");
+        living_content_section_image.setAttribute("src","https://picsum.photos/300/200?random=" + Math.floor(Math.random() * 100));
+        living_content_section_link.appendChild(living_content_section_image);
+        const living_content_section_text1 = document.createElement("p");
+        living_content_section_text1.classList.add("col-12", "m-0", "p-0","pt-2");
+        living_content_section_text1.classList.add("content-news-section");
+        living_content_section_text1.innerHTML = article.title;
+        living_content_section_link.appendChild(living_content_section_text1);
+        const living_content_section_text2 = document.createElement("p");
+        living_content_section_text2.classList.add("col-12", "m-0", "p-0","pt-2");
+        living_content_section_text2.classList.add("content-news-section");
+        article = new Article();
+        living_content_section_text2.innerHTML = article.title;
+        living_content_section_link.appendChild(living_content_section_text2);
+    }
+
 }
 
 function Article() {
     /*this.title = "Lorem ipsum dolor sit amet";
     this.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget";*/
-    let article = Math.floor(Math.random() * titles.length) + 1;
+    let article = Math.floor(Math.random() * titles.length);
     this.title = titles[article] || "Lorem ipsum dolor sit amet consectetur adipiscing elit Donec auctor nisl eget";
     this.text = texts[article] || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet risus vel augue ullamcorper, at suscipit velit scelerisque. In pretium lacus sed diam efficitur accumsan.";
+    this.subject = subjects[Math.floor(Math.random() * subjects.length)];
     this.minutes = Math.floor(Math.random() * 6) + 1;
     this.link = "#";
 }
@@ -653,7 +836,7 @@ function Article() {
 function Opinion() {
     /*this.author = "David Megli";
     this.title = "Lorem ipsum dolor sit amet";*/
-    let opinion = Math.floor(Math.random() * opinionTitles.length) + 1;
+    let opinion = Math.floor(Math.random() * opinionTitles.length);
     this.author = opinionAuthors[opinion] || "David Megli";
     this.title = opinionTitles[opinion] || "Lorem ipsum dolor sit amet";
     this.minutes = Math.floor(Math.random() * 6) + 1;
@@ -737,6 +920,32 @@ let texts = [  "Discover how practicing mindfulness can help you reduce stress a
     "Social media has become a major force in modern politics, from spreading disinformation to mobilizing grassroots movements. This article examines the opportunities and risks of social media in the political sphere."
 ];
 
+let subjects = [
+    "Art",
+    "Business",
+    "Climate",
+    "Community",
+    "Creativity",
+    "Culture",
+    "Cybersecurity",
+    "Democracy",
+    "Diplomacy",
+    "Education",
+    "Ethics",
+    "Health",
+    "Housing",
+    "Leadership",
+    "Mental Health",
+    "Politics",
+    "Privacy",
+    "Renewable Energy",
+    "Resilience",
+    "Space",
+    "Sustainability",
+    "Technology",
+    "Work"
+];
+
 let opinionTitles = [
     "Why I'm Optimistic About the Future of Climate Action",
     "The Case for Abolishing the Death Penalty",
@@ -781,4 +990,38 @@ let opinionAuthors = [
     "Lisa Davis",
     "Emily Kim",
     "Daniel Park"
+];
+
+let opinionSubjects = [
+    "Opinion",
+    "Opinion Comunist",
+    "Editorials",
+    "Guest Essays",
+    "Sunday Opinion"
+];
+
+let artsSubjects = [
+    "Art",
+    "Art & Design",
+    "Movies",
+    "Music",
+    "Television",
+    "Theater",
+    "Visual Arts",
+    "Dance",
+    "Books",
+    "Comics"
+];
+
+let livingSubjects = [
+    "Food",
+    "Health",
+    "Home & Garden",
+    "Travel",
+    "Style",
+    "Real Estate",
+    "Automobiles",
+    "Education",
+    "Jobs",
+    "Love"
 ];
