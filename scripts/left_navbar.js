@@ -183,10 +183,10 @@ function createLeftMenu() {
             });
             navbarListItem.addEventListener("mouseover", function () { //mostro il sottomenu quando entro nel menu
                 navbarListItem.parentElement.querySelectorAll(".sub-menu-list").forEach(function (subMenu) {
-                    subMenu.classList.add("d-none");
+                    subMenu.classList.add("d-none"); //nascondo tutti i sottomenu
                 });
                 if (subMenu.classList.contains("d-none"))
-                    subMenu.classList.remove("d-none");
+                    subMenu.classList.remove("d-none"); //mostro solo il sottomenu corrispondente
             });
             subMenu.addEventListener("mouseleave", function () { //nascondo il sottomenu dopo un timeout dall'uscita del sottomenu
                 submenuTimeout = setTimeout(function () {
@@ -197,6 +197,16 @@ function createLeftMenu() {
                 if (subMenu.classList.contains("d-none"))
                     subMenu.classList.remove("d-none");
                 clearTimeout(submenuTimeout);
+            });
+        }
+        else
+        {
+            navbarListItem.addEventListener("mouseover", function () { //nascondo tutti i sottomenu quando passo nel menu
+                let submenus = document.querySelectorAll("#left-navbar .sub-menu-list");
+                submenus.forEach(function (subMenu) {
+                    subMenu.classList.add("d-none"); //nascondo tutti i sottomenu
+                });
+                navbarContainer.classList.add("d-none");
             });
         }
     });
