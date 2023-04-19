@@ -63,7 +63,6 @@ function resetNavbar() {
         navbarContainer.classList.add("d-none");
 }
 
-
 document.addEventListener("DOMContentLoaded", setResolution);
 document.addEventListener("DOMContentLoaded", createMenu);
 window.addEventListener("resize", createMenu);
@@ -83,13 +82,15 @@ function createMenu() {
     if(window.innerWidth >= 1034) { //appena la risoluzione è maggiore di 1034
         if(!highResolutionMenu) { //se prima del resize era a bassa risoluzione
             deleteMenu(); //cancello il vecchio menu
+            removeModalClassesFromMenuButton(); //rimuovo le classi bootstrap che aggiungevano il modal
             createLeftMenu(); //creo il nuovo menu
             highResolutionMenu = true;
         }
     }
     else {
-        if(highResolutionMenu) {
+        if(highResolutionMenu) { //se sono passato da high a low resolution
             deleteMenu();
+            addModalClassesToMenuButton(); //aggiungo le classi bootstrap che aggiungono il modal
             createLowResMenu();
             highResolutionMenu = false;
         }
@@ -184,7 +185,8 @@ function createLeftMenu() {
                 navbarListItem.parentElement.querySelectorAll(".sub-menu-list").forEach(function (subMenu) {
                     subMenu.classList.add("d-none");
                 });
-                subMenu.classList.remove("d-none");
+                if (subMenu.classList.contains("d-none"))
+                    subMenu.classList.remove("d-none");
             });
             subMenu.addEventListener("mouseleave", function () { //nascondo il sottomenu dopo un timeout dall'uscita del sottomenu
                 submenuTimeout = setTimeout(function () {
@@ -192,7 +194,8 @@ function createLeftMenu() {
                 }, maxTimeout);
             });
             subMenu.addEventListener("mouseover", function () { //quando entro nel sottomenu mi assicuro che resti visibile durante il mouseover
-                subMenu.classList.remove("d-none");
+                if (subMenu.classList.contains("d-none"))
+                    subMenu.classList.remove("d-none");
                 clearTimeout(submenuTimeout);
             });
         }
@@ -200,11 +203,13 @@ function createLeftMenu() {
     navbarContainer.classList.add("d-none");
     let menuButton =  document.getElementById("desktop-section-button");
     menuButton.addEventListener("click", function () {
-        navbarContainer.classList.remove("d-none");
+        if(navbarContainer.classList.contains("d-none"))
+            navbarContainer.classList.remove("d-none");
     });
     navbarList.addEventListener("mouseover", function () {
         mousePassedOverMenu = true;
-        navbarContainer.classList.remove("d-none");
+        if (navbarContainer.classList.contains("d-none"))
+            navbarContainer.classList.remove("d-none");
         clearTimeout(menuTimeout);
     });
     navbarList.addEventListener("mouseleave", function () {
@@ -340,14 +345,24 @@ function createLowResMenu() {
             }
     });
 
-
-    //nelle precedenti righe News, Opinions, Arts, Living sono le sezioni principali del menu, mentre le altre sono sottosezioni corrispondenti a News, Opinions, Arts, Living, le prossime righe creani 1 div per ogni sezione, ognuna delle quali è una riga bootstrap, al cui interno ci sono 1 riga dedicata al titolo e una div divisa in 2 colonne per le sottosezioni
-
     //Footer della Modal
     let modalMenuFooter = document.createElement("div");
     modalMenuFooter.classList.add("modal-footer");
     modalMenuContent.appendChild(modalMenuFooter);
 
 
+}
 
+function addModalClassesToMenuButton() {
+    let menuButton =  document.getElementById("desktop-section-button");
+    menuButton.setAttribute("data-bs-toggle", "modal");
+    menuButton.setAttribute("data-bs-target", "#modal-menu");
+}
+
+function removeModalClassesFromMenuButton() {
+    let menuButton =  document.getElementById("desktop-section-button");
+    if (menuButton.hasAttribute("data-bs-toggle"))
+        menuButton.removeAttribute("data-bs-toggle");
+    if (menuButton.hasAttribute("data-bs-target"))
+        menuButton.removeAttribute("data-bs-target");
 }

@@ -13,7 +13,7 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.nav-link {
+section#navbar-container > nav#left-navbar a.nav-link {
     font: 14px Helvetica, Arial, sans-serif;
     font-size: 0.875rem;
     line-height: 1.3em;
