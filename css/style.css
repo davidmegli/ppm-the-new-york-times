@@ -846,6 +846,14 @@ div#nav nav a{
     }
 }
 
+@media (max-width: 1041px) {
+    div#nav nav#main-nav a.link-secondary {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}
+
+
 #main-nav.is-sticky {
     margin-left: auto;
     margin-right: auto;

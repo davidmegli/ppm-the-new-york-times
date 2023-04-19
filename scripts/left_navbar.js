@@ -80,10 +80,10 @@ function createMenu() {
     console.log("createMenu");
     console.log("window.innerWidth: " + window.innerWidth);
     console.log("highResolutionMenu: " + highResolutionMenu);
-    if(window.innerWidth >= 1034) {
-        if(!highResolutionMenu) {
-            deleteMenu();
-            createLeftMenu();
+    if(window.innerWidth >= 1034) { //appena la risoluzione è maggiore di 1034
+        if(!highResolutionMenu) { //se prima del resize era a bassa risoluzione
+            deleteMenu(); //cancello il vecchio menu
+            createLeftMenu(); //creo il nuovo menu
             highResolutionMenu = true;
         }
     }
@@ -101,7 +101,8 @@ function deleteMenu() {
     let modalMenu = document.getElementById("modal-menu");
     if(modalMenu !== null) {
         let modal = bootstrap.Modal.getInstance(modalMenu);
-        modal.hide();
+        if(modal !== null)
+            modal.hide();
     }
     if(navbarContainer.childNodes.length > 0)
         navbarContainer.removeChild(navbarContainer.childNodes[0]);
