@@ -198,12 +198,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Footer */
 footer {
     border-top: 2px solid #e5e5e5;
-    padding: 1px 0px 1px 0px;
+    padding: 1px 0 1px 0;
 }
 
 #footer-logo {
     border-top: 1px solid #e5e5e5;
-    padding: 10px 0px 20px 0px;
+    padding: 10px 0 20px 0;
 }
 
 @media (max-width: 767px) {
@@ -256,7 +256,7 @@ p {
 
 #nav{
      border-style: none none double none;
-    margin: 0px 0px 8px;
+    margin: 0 0 8px;
 }
 
 div#nav {
@@ -272,7 +272,7 @@ div#nav a{
 
 div#nav nav{
     padding: 0 40px;
-    margin: 7px 0px 0px 0px;
+    margin: 7px 0 0 0;
 }
 
 
@@ -1027,5 +1027,87 @@ div#nav nav a{
     }
     .content-section2-right-link-last {
         border-bottom: 1px solid #e2e2e2;
+    }
+}
+
+#weather-div {
+    position:relative
+}
+
+.weather-icon {
+    position: absolute;
+}
+
+#weather-icon1 {
+    z-index: 1;
+}
+#weather-icon2 {
+    z-index: 2;
+}
+#weather-icon3 {
+    z-index: 3;
+}
+
+#weather-icon2 {
+    animation-name: fade2;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-direction:  normal;
+}
+
+#weather-icon3 {
+    animation-name: fade3;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-direction: normal;
+}
+
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 1;
+    }
+    44% {
+        opacity: 1;
+    }
+    58% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade3 {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0;
+    }
+    43% {
+        opacity: 1;
+    }
+    66% {
+        opacity: 1;
+    }
+    76% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1033px) {
+    weather-icon {
+        display: none;
     }
 }
